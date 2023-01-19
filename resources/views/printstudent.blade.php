@@ -14,7 +14,15 @@ $('.btnprn').printPage();
 </script>
 
 <style>
-    
+    .name-invoices{
+        border-bottom: 1px solid black ;
+        padding-bottom:1px;
+        margin-right: 10px ;
+        width: 100% ;
+    }
+    .name-invoices-title{
+        white-space: nowrap ;
+    }
 </style>
 
 
@@ -54,9 +62,25 @@ $('.btnprn').printPage();
                        الموافق :   {{Date::today()->format('d/F/o')}}ه
                 </div>
             </div>
-        
             <div>
+            </div>
+        </div>
+</section>
 
+<section class="section-invoices">
+        <div class="title-phone px-2">
+            <div class="d-flex w-100">
+                <div class="name-invoices-title">
+                    المطلوب من المكرم /
+                </div>
+                <div class="name-invoices text-right"> dddddd
+                  <!-- <div>
+                      igh
+                  </div>
+                  <div>
+                      _________________________________________________
+                  </div> -->
+                </div>
             </div>
         </div>
 
@@ -76,4 +100,5 @@ $('.btnprn').printPage();
                     </tr>
                 @endforeach
 </section>
+
 @endsection
