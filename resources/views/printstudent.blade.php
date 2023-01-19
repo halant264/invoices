@@ -69,7 +69,7 @@ $('.btnprn').printPage();
 
 <section class="section-invoices">
         <div class="title-phone px-2">
-            <div class="d-flex w-100">
+            <div class="d-flex w-100"> 
                 <div class="name-invoices-title">
                     المطلوب من المكرم /
                 </div>
