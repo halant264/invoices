@@ -6,7 +6,7 @@ use GeniusTS\HijriDate\Date;
 @section('content')
 
 
-<section class="section-invoices my-3">
+<section class="section-invoices">
         <h1 class="header-title text-center">مركز هويدي النسيم</h1>
         <div class="title-phone px-2">
             <div class="d-flex justify-content-between my-1 px-3">
@@ -42,27 +42,106 @@ use GeniusTS\HijriDate\Date;
                        الموافق :   {{Date::today()->format('d/F/o')}}ه
                 </div>
             </div>
-        
             <div>
+            </div>
+        </div>  
+</section>
 
+<section class="section-invoices">
+        <div class="title-phone px-2">
+            <div class="d-flex w-100"> 
+                <div class="name-invoices-title">
+                    المطلوب من المكرم /
+                </div>
+                <div class="name-invoices text-center"> جميل طربوش
+                  <!-- <div>
+                      igh
+                  </div>
+                  <div>
+                      _________________________________________________
+                  </div> -->
+                </div>
+                .Mr
             </div>
         </div>
 
-            <table class="table" >
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Course</th>
+        <div class="my-2 table-content p-2">
+
+  
+            <table class="table border-t m-0 " >
+                <tr class=" m-1">
+                    <th class="border-t">
+                        Id
+                    </th>
+                    
+                    <th class="border-t">
+                        Name
+                    </th>
+                    <th class="border-t">
+                        Email
+                    </th>
+                    <th class="border-t">
+                        Course
+                    </th>
                 </tr>
-                @foreach($students as $student)
-                    <tr>
-                        <td>{{ $student->id }}</td>
-                        <td>{{ $student->address }}</td>
-                        <td>{{ $student->user_id }}</td>
-                        <td>{{ $student->country_id }}</td>
-                    </tr>
-                @endforeach
+                @for ($i = 10; $i >= 0; $i--)
+                <tr class=" m-1">
+                    <td class="border-t">
+                        <div>
+                           $i
+                        </div>
+                        <div>
+                           $i
+                        </div>
+                    </td>
+                    <td class="border-t">
+                        <div>
+                        $i
+                        </div>
+                        <div>
+                        $i
+                        </div>
+                    </td>
+                    <td class="border-t">
+                        <div>
+                        $i
+                        </div>
+                        <div>
+                        $i
+                        </div>
+                    </td>
+                    <td class="border-t">
+                        <div>
+                        $i
+                        </div>
+                        <div>
+                        $i
+                        </div>
+                    </td>
+                </tr>
+    @endfor
+               
+             
+           
+             
+             
+        </div>
 </section>
 
 @endsection
+
+@foreach($i as $j =>$value)
+                    <td class="border-t ">
+                        <div class="">
+                            gy
+                        </div>
+                    @foreach ($value as $num)
+                        <div class=" border-tb">
+                
+                          {{$j}}  {{ $num}}
+                        </div>
+                        
+                    @endforeach
+                    </td>
+                    
+                @endforeach

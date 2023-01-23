@@ -13,17 +13,6 @@ $('.btnprn').printPage();
 });
 </script>
 
-<style>
-    .name-invoices{
-        border-bottom: 1px solid black ;
-        padding-bottom:1px;
-        margin-right: 10px ;
-        width: 100% ;
-    }
-    .name-invoices-title{
-        white-space: nowrap ;
-    }
-</style>
 
 
 <section class="section-invoices">
@@ -64,41 +53,183 @@ $('.btnprn').printPage();
             </div>
             <div>
             </div>
-        </div>  h
-</section>
-
-<section class="section-invoices">
+        </div> 
         <div class="title-phone px-2">
             <div class="d-flex w-100"> 
                 <div class="name-invoices-title">
                     المطلوب من المكرم /
                 </div>
-                <div class="name-invoices text-right"> dddddd
-                  <!-- <div>
-                      igh
-                  </div>
-                  <div>
-                      _________________________________________________
-                  </div> -->
+                <div class="name-invoices text-center"> جميل طربوش
+               
+                </div>
+                .Mr
+            </div>
+        </div> 
+</section>
+
+<style>
+    .footer-invoice .h-i-sec{
+      height :35px
+    }
+    .in-details{
+        font-size: 12px;
+        font-weight: bold;
+    }
+</style>
+<section class="section-invoices">
+    <div class="container my-2 s-content ">
+        <div class="row">
+            <div class="col-12 p-0 header-invoice ">
+                <div class="row m-1">
+                    <div class="col-3 h-col">
+                        <div class="h-i-sec">
+                        s
+                        </div>
+                    </div>
+                    <div class="col-3 h-col">
+                        <div class="h-i-sec">
+                        s
+                        </div>
+                    </div>
+                    <div class="col-1 h-col">
+                       <div class="h-i-sec">
+                        s
+                        </div>
+                    </div>
+                    <div class="col-5 h-col">
+                        <div class="h-i-sec">
+                        s
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-12 p-0 ">
+                <div class="row m-1">
+                    <div class="col-3 h-col">
+                        <div class=" h-i-sec">
+                        @for($i=0 ; $i < 16  ; $i++)
+                            <div class="d-flex border-row ">
+                                <div class="s-row" ></div>
+                                <div class="w-75 text-center h-cell">
+                                      
+                                </div>
+                            </div>
+                            @endfor
+                        </div>
+                    </div>
+
+
+                    <div class="col-3 h-col">
+                          <div class=" h-i-sec">
+                            @for($i=0 ; $i < 16  ; $i++)
+                                <div class="d-flex border-row">
+                                    <div class="s-row" ></div>
+                                    <div class="w-75 text-center h-cell">
+                                           
+                                    </div>
+                                </div>
+                            @endfor
+                          </div>
+                    </div>
+                    <div class="col-1 h-col">
+                        <div class=" h-i-sec">
+                            @for($i=0 ; $i < 16  ; $i++)
+                                <div class=" border-row">
+                                    <div class="" ></div>
+                                    <div class=" text-center h-cell">
+                                           
+                                    </div>
+                                </div>
+                            @endfor
+                        </div>
+                    </div>
+                    <div class="col-5 h-col">
+                    <div class=" h-i-sec h-100">
+                            @for($i=0 ; $i < 16  ; $i++)
+                            @if($i == 11)
+                            <div >
+                               مركز هويدي النسيم 
+                               <br>
+                                الضمان لا يشمل الكسر أو الاهمال
+                                <br>
+                               ضمان لمدة: 
+                               <br>
+                               التاريخ :   {{ Hijri::DateIndicDigits('j/F/Y')}}ه
+                               
+                            </div>
+                            @break
+                            @else
+                                <div class=" border-row">
+                                    <div class="" ></div>
+                                    <div class=" text-center h-cell">
+                                          
+                                    </div>
+                                </div>
+                              
+                            @endif
+                            
+                            @endfor
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-12 p-0  footer-invoice">
+                <div class="row m-1">
+                    <div class="col-3 h-col">
+                        <div class="h-i-sec">
+                       
+                        </div>
+                    </div>
+                    <div class="col-9 h-col">
+                        <div class="h-i-sec d-flex " >
+                            <div class="mx-1 my-auto " style=" width:15%">
+                                اللإجمالي: 
+                            </div>
+                            <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                             ...................................................................
+                            </div>
+                            <div class="mx-1 my-auto " style=" width:15%;">
+                              :Total
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-            <table class="table" >
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Course</th>
-                </tr>
-                @foreach($students as $student)
-                    <tr>
-                        <td>{{ $student->id }}</td>
-                        <td>{{ $student->address }}</td>
-                        <td>{{ $student->user_id }}</td>
-                        <td>{{ $student->country_id }}</td>
-                    </tr>
-                @endforeach
+    </div>
 </section>
 
+<section class="section-invoices in-details">
+        <div class=" d-flex justify-content-between" >
+            <div class=" d-flex w-52">
+                <div class="mx-1 my-auto " style=" width:15%">
+                    اللإجمالي: 
+                </div>
+                <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                    ...................................................................
+                </div>
+                <div class="mx-1 my-auto " style=" width:15%;">
+                    :Total
+                </div>
+            </div>
+            <div class=" d-flex w-50">
+                <div class="mx-1 my-auto " style=" width:15%">
+                    اللإجمالي: 
+                </div>
+                <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                    ...................................................................
+                </div>
+                <div class="mx-1 my-auto " style=" width:15%;">
+                    :Total
+                </div>
+            </div>
+        </div>
+   
+</section>
+
+<br>
 @endsection
