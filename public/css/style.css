@@ -37,7 +37,7 @@ body{
     border: 1px solid black;
     border-radius: 8px;
     text-align:center;
-    padding: 4px;
+    padding: 1px 4px;
 }
 .name-invoices{
     border-bottom: 1px solid black ;
