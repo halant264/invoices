@@ -6,16 +6,21 @@ use GeniusTS\HijriDate\Date;
 @section('content')
 <center>
 <br><br>
-<a href="{{ url('/prnpriview') }}" class="btnprn btn">Print Preview</a></center>
+<a id="print" href="{{ url('/prnpriview') }}" class="btnprn btn">Print Preview</a></center>
 <script type="text/javascript">
 $(document).ready(function(){
 $('.btnprn').printPage();
 });
+
+// const printBtn = document.getElementById('print');
+// printBtn.addEventListener('click' ,function(){
+//     print();
+// })
 </script>
+<style>@page { size: A5 }</style> 
+<body class="A5">
 
-
-
-<section class="section-invoices">
+<section class="sheet section-invoices padding-10mm">
         <h1 class="header-title text-center">مركز هويدي النسيم</h1>
         <div class="title-phone px-2">
             <div class="d-flex justify-content-between my-1 px-3">
@@ -38,8 +43,8 @@ $('.btnprn').printPage();
 
             </div>
         </div>
-        <div class="date-accept px-2">
-            <div class="d-flex justify-content-between my-1 ">
+        <div class="date-accept px-2 d-flex justify-content-between my-1 ">
+         
                 <div class="fs-12 m-auto">
                        التاريخ :   {{ Hijri::DateIndicDigits('j/F/Y')}}ه
                 </div>
@@ -50,9 +55,7 @@ $('.btnprn').printPage();
                 <div class="fs-12 m-auto">
                        الموافق :   {{Date::today()->format('d/F/o')}}ه
                 </div>
-            </div>
-            <div>
-            </div>
+       
         </div> 
         <div class="title-phone px-2">
             <div class="d-flex w-100"> 
@@ -65,19 +68,135 @@ $('.btnprn').printPage();
                 .Mr
             </div>
         </div> 
+        <div class="container my-2 s-content ">
+            <div class="row">
+                <div class="col-12 p-0 header-invoice ">
+                    <div class="row m-1">
+                        <div class="col-3 h-col">
+                            <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                        <div class="col-3 h-col">
+                            <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                        <div class="col-1 h-col">
+                        <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                        <div class="col-5 h-col">
+                            <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="col-12 p-0 ">
+                    <div class="row m-1">
+                        <div class="col-3 h-col">
+                            <div class=" h-i-sec">
+                            @for($i=0 ; $i < 16  ; $i++)
+                                <div class="d-flex border-row ">
+                                    <div class="s-row" ></div>
+                                    <div class="w-75 text-center h-cell">
+                                        
+                                    </div>
+                                </div>
+                                @endfor
+                            </div>
+                        </div>
+
+
+                        <div class="col-3 h-col">
+                            <div class=" h-i-sec">
+                                @for($i=0 ; $i < 16  ; $i++)
+                                    <div class="d-flex border-row">
+                                        <div class="s-row" ></div>
+                                        <div class="w-75 text-center h-cell">
+                                            
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+                        <div class="col-1 h-col">
+                            <div class=" h-i-sec">
+                                @for($i=0 ; $i < 16  ; $i++)
+                                    <div class=" border-row">
+                                        <div class="" ></div>
+                                        <div class=" text-center h-cell">
+                                            
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+                        <div class="col-5 h-col">
+                        <div class=" h-i-sec h-100">
+                                @for($i=0 ; $i < 16  ; $i++)
+                                @if($i == 11)
+                                <div >
+                                مركز هويدي النسيم 
+                                <br>
+                                    الضمان لا يشمل الكسر أو الاهمال
+                                    <br>
+                                ضمان لمدة: 
+                                <br>
+                                التاريخ :   {{ Hijri::DateIndicDigits('j/F/Y')}}ه
+                                
+                                </div>
+                                @break
+                                @else
+                                    <div class=" border-row">
+                                        <div class="" ></div>
+                                        <div class=" text-center h-cell">
+                                            
+                                        </div>
+                                    </div>
+                                
+                                @endif
+                                
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="col-12 p-0  footer-invoice">
+                    <div class="row m-1">
+                        <div class="col-3 h-col">
+                            <div class="h-i-sec">
+                        
+                            </div>
+                        </div>
+                        <div class="col-9 h-col">
+                            <div class="h-i-sec d-flex " >
+                                <div class="mx-1 my-auto " style=" width:15%">
+                                    اللإجمالي: 
+                                </div>
+                                <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                                ...................................................................
+                                </div>
+                                <div class="mx-1 my-auto " style=" width:15%;">
+                                :Total
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
 
-<style>
-    .footer-invoice .h-i-sec{
-      height :35px
-    }
-    .in-details{
-        font-size: 12px;
-        font-weight: bold;
-    }
-</style>
-<section class="section-invoices">
-    <div class="container my-2 s-content ">
+
+<!-- <section class="sheet section-invoices padding-10mm"> -->
+    <!-- <div class="container my-2 s-content ">
         <div class="row">
             <div class="col-12 p-0 header-invoice ">
                 <div class="row m-1">
@@ -200,10 +319,10 @@ $('.btnprn').printPage();
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </div> -->
+<!-- </section> -->
 
-<section class="section-invoices in-details">
+<!-- <section class="section-invoices in-details">
         <div class=" d-flex justify-content-between" >
             <div class=" d-flex w-52">
                 <div class="mx-1 my-auto " style=" width:15%">
@@ -229,7 +348,9 @@ $('.btnprn').printPage();
             </div>
         </div>
    
-</section>
+</section> -->
 
 <br>
+
+</body> 
 @endsection

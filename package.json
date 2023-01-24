@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.2.3",
-        "laravel-mix-blade-reload": "^3.0.0"
+        "laravel-mix-blade-reload": "^3.0.0",
+        "paper-css": "^0.4.1"
     }
 }

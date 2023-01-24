@@ -5,8 +5,13 @@ use GeniusTS\HijriDate\Date;
 @extends('layouts.my')
 @section('content')
 
+<link rel="stylesheet" href="css/paper.css">
 
-<section class="section-invoices">
+<style>@page { size: A5 }</style> 
+
+
+<body class="A5">
+<section class=" sheet section-invoices padding-10mm">
         <h1 class="header-title text-center">مركز هويدي النسيم</h1>
         <div class="title-phone px-2">
             <div class="d-flex justify-content-between my-1 px-3">
@@ -29,8 +34,8 @@ use GeniusTS\HijriDate\Date;
 
             </div>
         </div>
-        <div class="date-accept px-2">
-            <div class="d-flex justify-content-between my-1 ">
+        <div class="date-accept px-2 d-flex justify-content-between my-1">
+            <!-- <div class="d-flex justify-content-between my-1 "> -->
                 <div class="fs-12 m-auto">
                        التاريخ :   {{ Hijri::DateIndicDigits('j/F/Y')}}ه
                 </div>
@@ -41,107 +46,177 @@ use GeniusTS\HijriDate\Date;
                 <div class="fs-12 m-auto">
                        الموافق :   {{Date::today()->format('d/F/o')}}ه
                 </div>
-            </div>
-            <div>
-            </div>
-        </div>  
-</section>
-
-<section class="section-invoices">
+            <!-- </div> -->
+       
+        </div> 
         <div class="title-phone px-2">
             <div class="d-flex w-100"> 
                 <div class="name-invoices-title">
                     المطلوب من المكرم /
                 </div>
                 <div class="name-invoices text-center"> جميل طربوش
-                  <!-- <div>
-                      igh
-                  </div>
-                  <div>
-                      _________________________________________________
-                  </div> -->
+               
                 </div>
                 .Mr
             </div>
         </div>
+        <div class="container my-2 s-content ">
+            <div class="row">
+                <div class="col-12 p-0 header-invoice ">
+                    <div class="row m-1">
+                        <div class="col-3 h-col">
+                            <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                        <div class="col-3 h-col">
+                            <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                        <div class="col-1 h-col">
+                        <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                        <div class="col-5 h-col">
+                            <div class="h-i-sec">
+                            s
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 p-0 ">
+                    <div class="row m-1">
+                        <div class="col-3 h-col">
+                            <div class=" h-i-sec">
+                            @for($i=0 ; $i < 14  ; $i++)
+                                <div class="d-flex border-row ">
+                                    <div class="s-row" ></div>
+                                    <div class="w-75 text-center h-cell">
+                                        
+                                    </div>
+                                </div>
+                                @endfor
+                            </div>
+                        </div>
 
-        <div class="my-2 table-content p-2">
 
-  
-            <table class="table border-t m-0 " >
-                <tr class=" m-1">
-                    <th class="border-t">
-                        Id
-                    </th>
+                        <div class="col-3 h-col">
+                            <div class=" h-i-sec">
+                                @for($i=0 ; $i < 14  ; $i++)
+                                    <div class="d-flex border-row">
+                                        <div class="s-row" ></div>
+                                        <div class="w-75 text-center h-cell">
+                                            
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+                        <div class="col-1 h-col">
+                            <div class=" h-i-sec">
+                                @for($i=0 ; $i < 14  ; $i++)
+                                    <div class=" border-row">
+                                        <div class="" ></div>
+                                        <div class=" text-center h-cell">
+                                            
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+                        <div class="col-5 h-col">
+                        <div class=" h-i-sec h-100">
+                                @for($i=0 ; $i < 14  ; $i++)
+                                @if($i == 9)
+                                <div >
+                                مركز هويدي النسيم 
+                                <br>
+                                    الضمان لا يشمل الكسر أو الاهمال
+                                    <br>
+                                ضمان لمدة: 
+                                <br>
+                                التاريخ :   {{ Hijri::DateIndicDigits('j/F/Y')}}ه
+                                
+                                </div>
+                                @break
+                                @else
+                                    <div class=" border-row">
+                                        <div class="" ></div>
+                                        <div class=" text-center h-cell">
+                                            
+                                        </div>
+                                    </div>
+                                
+                                @endif
+                                
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+
                     
-                    <th class="border-t">
-                        Name
-                    </th>
-                    <th class="border-t">
-                        Email
-                    </th>
-                    <th class="border-t">
-                        Course
-                    </th>
-                </tr>
-                @for ($i = 10; $i >= 0; $i--)
-                <tr class=" m-1">
-                    <td class="border-t">
-                        <div>
-                           $i
+                </div>
+                <div class="col-12 p-0  footer-invoice">
+                    <div class="row m-1">
+                        <div class="col-3 h-col">
+                            <div class="h-i-sec">
+                        
+                            </div>
                         </div>
-                        <div>
-                           $i
+                        <div class="col-9 h-col">
+                            <div class="h-i-sec d-flex " >
+                                <div class="mx-1 my-auto " style=" width:15%">
+                                    اللإجمالي: 
+                                </div>
+                                <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                                ...................................................................
+                                </div>
+                                <div class="mx-1 my-auto " style=" width:15%;">
+                                :Total
+                                </div>
+                            </div>
                         </div>
-                    </td>
-                    <td class="border-t">
-                        <div>
-                        $i
-                        </div>
-                        <div>
-                        $i
-                        </div>
-                    </td>
-                    <td class="border-t">
-                        <div>
-                        $i
-                        </div>
-                        <div>
-                        $i
-                        </div>
-                    </td>
-                    <td class="border-t">
-                        <div>
-                        $i
-                        </div>
-                        <div>
-                        $i
-                        </div>
-                    </td>
-                </tr>
-    @endfor
-               
-             
-           
-             
-             
-        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
 </section>
+
+
+
+<!-- 
+<section class="section-invoices in-details">
+        <div class=" d-flex justify-content-between" >
+            <div class=" d-flex w-52">
+                <div class="mx-1 my-auto " style=" width:15%">
+                    اللإجمالي: 
+                </div>
+                <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                    ...................................................................
+                </div>
+                <div class="mx-1 my-auto " style=" width:15%;">
+                    :Total
+                </div>
+            </div>
+            <div class=" d-flex w-50">
+                <div class="mx-1 my-auto " style=" width:15%">
+                    اللإجمالي: 
+                </div>
+                <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
+                    ...................................................................
+                </div>
+                <div class="mx-1 my-auto " style=" width:15%;">
+                    :Total
+                </div>
+            </div>
+        </div>
+   
+</section> -->
+
+<br>
+</body>
 
 @endsection
 
-@foreach($i as $j =>$value)
-                    <td class="border-t ">
-                        <div class="">
-                            gy
-                        </div>
-                    @foreach ($value as $num)
-                        <div class=" border-tb">
-                
-                          {{$j}}  {{ $num}}
-                        </div>
-                        
-                    @endforeach
-                    </td>
-                    
-                @endforeach

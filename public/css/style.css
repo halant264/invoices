@@ -7,8 +7,27 @@ body{
     margin: 0 auto;
 }
 .section-invoices .header-title{
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
+    margin: 0px 4rem;
+    text-align: center;
+}
+.title-phone{
+    padding: 0 2rem;
+}
+.title-phone div{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.date-accept {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.date-accept div{
+    margin: auto 0 ;
 }
 .fs-12{
     font-size: 12px;
@@ -66,3 +85,14 @@ border-left: 1px solid black;
 .h-cell{
 height:25px;
 }
+.footer-invoice .h-i-sec{
+    height :35px
+  }
+  .in-details{
+      font-size: 12px;
+      font-weight: bold;
+  }
+
+  /* //////////////////////////////////// */
+
+  

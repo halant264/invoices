@@ -25,3 +25,6 @@ Route::get('/lang', function (){
 
 Route::get('/students',[PrintController::class, 'index']);
 Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
+Route::get('/test', function(){
+    return view('test');
+});
