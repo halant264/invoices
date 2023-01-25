@@ -29,11 +29,26 @@ body{
 .date-accept div{
     margin: auto 0 ;
 }
+.fs-9{
+    font-size: 9px; 
+}
+.fs-11{
+    font-size: 11px; 
+}
 .fs-12{
-    font-size: 12px;
-    
+    font-size: 12px; 
+}
+.fs-26{
+    font-size: 26px;   
+}
+.f-bold{
+    font-weight: bold;
+}
+.h-18{
+    height: 18px;
 }
 .cash-invoice-title{
+    line-height: 1;
     border: 1px solid black;
     border-radius: 8px;
     text-align:center;
@@ -47,6 +62,10 @@ body{
 }
 .name-invoices-title{
     white-space: nowrap ;
+    position: relative;
+}
+.name-invoices-title::after{
+    top: 100%;
 }
 
 .s-content{
@@ -54,13 +73,18 @@ body{
     border: 1px solid black ;
     /* height:445px; */
 }
+.header-invoice .h-col{
+    height: 50px;
+} 
 .header-invoice .h-i-sec{
     border-radius: 5px;
     border: 1px solid black ;
     width : 100% ;
-    padding: 0 2px;
+    height: 100%;
+    padding: 1px 2px;
     text-align: center;
 } 
+
  .h-col{
     padding: 0 1px;
 } 
@@ -70,6 +94,9 @@ body{
     width : 100% ;
     padding: 0 2px;
     text-align: center;
+}
+.border-top{
+    border-top: 1px solid black ;
 }
 .border-row:not(:last-of-type){
     border-bottom: 1px dotted black ;

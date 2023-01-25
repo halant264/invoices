@@ -21,7 +21,7 @@ body.legal            .sheet { width: 216mm; height: 356mm }
 body.legal.landscape  .sheet { width: 357mm; height: 215mm }
 
 /** Padding area **/
-.sheet.padding-10mm { padding: 5mm }
+.sheet.padding-10mm { padding: 2mm 10mm 5mm 10mm }
 .sheet.padding-15mm { padding: 15mm }
 .sheet.padding-20mm { padding: 20mm }
 .sheet.padding-25mm { padding: 25mm }

@@ -5,7 +5,7 @@ use GeniusTS\HijriDate\Date;
 @extends('layouts.my')
 @section('content')
 
-<link rel="stylesheet" href="css/boot.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/style2.css">
 
 <body>
