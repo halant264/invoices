@@ -28,3 +28,6 @@ Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
 Route::get('/test', function(){
     return view('test');
 });
+Route::get('/invoice2', function(){
+    return view('invoice');
+});
