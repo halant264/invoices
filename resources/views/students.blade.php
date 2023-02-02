@@ -14,9 +14,9 @@ setLocale(LC_TIME, 'ar_AE');
 <body class="A5">
     
 <section class="sheet section-invoices padding-10mm">
-        <h1 class="header-title text-center">مركز هويدي النسيم</h1>
-        <div class="title-phone px-2">
-            <div class="d-flex justify-content-between my-1 px-3">
+        <h1 class="header-title text-center">مـركـز هويــدي النسيـم</h1>
+        <div class="title-phone px-2 f-bold">
+            <div class="d-flex justify-content-between mt-1 px-3">
                 <div class="px-4">
                         مدالله هويدي
                 </div>
@@ -24,7 +24,7 @@ setLocale(LC_TIME, 'ar_AE');
                    <span >جوال: </span> 0504448754 
                 </div>
             </div>
-            <div class="d-flex justify-content-between my-1 px-3">
+            <div class="d-flex justify-content-between mb-1 px-3">
                 <div>
                        ميكانيك - كهرباء سيارات
                 </div>
@@ -36,14 +36,21 @@ setLocale(LC_TIME, 'ar_AE');
 
             </div>
         </div>
-        <div class="date-accept px-2 d-flex justify-content-between my-1 ">
+        <div class="date-accept px-2 d-flex justify-content-between f-bold">
          
                 <div class="fs-12 m-auto">
                        التاريخ :   {{ Hijri::DateIndicDigits('j/F/Y')}}ه
                 </div>
-                <div class="cash-invoice-title m-auto p-1">
-                   فاتورة نقداَ <br>
-                    Cash Invoice
+                <div class="m-auto">
+                   <div class="cash-invoice-tax py-0 px-1 mx-auto">
+                       رقم الضريبة
+                       123456
+                    </div>
+                    <div class="cash-invoice-title  p-1">
+                        فاتورة نقداَ <br>
+                        Cash Invoice
+                    </div>
+                    
                     
                 </div>
                 <div class="fs-12 m-auto">
@@ -51,7 +58,7 @@ setLocale(LC_TIME, 'ar_AE');
                 </div>
        
         </div> 
-        <div class="title-phone px-2">
+        <div class="title-phone px-2 f-bold">
             <div class="d-flex w-100 align-items-end"> 
                 <div class="name-invoices-title ">
                      <span class="h-18 ">المطلوب من المكرم /</span> 
@@ -135,14 +142,14 @@ setLocale(LC_TIME, 'ar_AE');
                             </div>
                         </div>
                         <div class="col-5 h-col">
-                        <div class=" h-i-sec h-100">
+                         <div class=" h-i-sec h-100">
                                 @for($i=0 ; $i < 16  ; $i++)
                                 @if($i == 11)
                                 <div class="d-flex my-auto mx-1 text-center ">
-                                  <div class="d-block">
+                                  <div class="d-block mt-1">
                                     <span class="f-bold fs-26">مركز هويدي النسيم  </span>  
                                     <span class="f-bold " > الضمان لا يشمل الكسر أو الاهمال </span>  
-                                    <span class="f-bold d-block text-right" > ضمان لمدة: </span> 
+                                    <span class="f-bold d-block mr-2 text-right" > ضمان لمدة: </span> 
                                     <span class="f-bold " >  من التاريخ :  {{ Carbon\Carbon::now()->translatedFormat('j/F/Y')}}م </span>
                                    
                                   </div>
@@ -159,8 +166,6 @@ setLocale(LC_TIME, 'ar_AE');
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
                 <div class="col-12 p-0  footer-invoice">
                     <div class="row m-1">
@@ -185,6 +190,7 @@ setLocale(LC_TIME, 'ar_AE');
                     </div>
                 </div>
             </div>
+            
         </div>
         <div class=" d-flex justify-content-between w-100" >
             <div class=" d-flex w-50 fs-12 justify-content-start f-bold">
@@ -209,6 +215,9 @@ setLocale(LC_TIME, 'ar_AE');
                     :Manager
                 </div>
             </div>
+        </div>
+        <div class="side-title">
+                    الفاتورة بدون ختم المركز تعتبر لاغية 
         </div>
 </section>
 

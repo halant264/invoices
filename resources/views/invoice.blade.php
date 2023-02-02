@@ -9,90 +9,20 @@ use GeniusTS\HijriDate\Date;
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-   .line-div {
-        position: relative;
-        height: 2px;
-        background: black;
-    }
-    .line-div div {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -10px;
-        background: white;
-        padding: 0 2px;
-      
-    }
-    .title-phone-v2{
-        margin: 10px;
-    }
-    .title-phone-v2 div{
-        display: flex;
-        justify-content: center;
 
-
-        
-    }
-    .title-phone-v2 .title-v2{
-        margin-left: -4rem;
-    }
-    .ce-car{
-        border-radius:10px ;
-        border : 1px solid black ;
-        position: relative;
-    }
-    .ce-car .ce-car-title{
-        line-height: 1;
-        font-weight: bold;
-        font-size: 11px;
-        text-align: center;
-        border-radius: 10px;
-        border: 1px solid black;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -23%;
-        background: white;
-        padding: 5px 10px;
-        box-shadow: 0px 2px;
-    }
-    .ce-car .descreption{
-        line-height: 1;
-        font-weight: bold;
-        font-size: 11px;
-        text-align: center;
-        border-radius: 10px;
-        border: 1px solid black;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -18%;
-        background: white;
-        padding: 5px 10px;
-        
-    }
-    .car-input div{
-        font-size: 15px;
-        font-weight: bold;
-        align-items: baseline;
-    
-    }
-    .input-border{
-        border-bottom: 1px dotted black ;
-    }
 </style>
 
 <body class="A5">
     
 <section class="sheet section-invoices ">
-        <h1 class="header-title text-center">مركز هويدي النسيم</h1>
+        <h1 class="header-title text-center ffa f-bold">مركز هويدي النسيم</h1>
 
-        <div class="w-100 line-div ">
-           <div class="   ">
+        <div class="w-100 line-div f-bold">
+           <div class="">
                    ميكانيك - كهرباء سيارات  
            </div>
         </div>
-        <div class="title-phone-v2 d-flex justify-content-end">
+        <div class="title-phone-v2 d-flex justify-content-end f-bold">
             <div class="my-auto w-75 title-v2">
                 مد الله هويدي
             </div>
@@ -136,34 +66,65 @@ use GeniusTS\HijriDate\Date;
             </div>
 
         </div>
-        <div class="ce-car my-4 p-3 mx-5">
-            <div class="descreption "> <span class="fs-18"> البيان</div>
-            <div class=" "> <span class="fs-18"> تعتبر هذه الشهادة لاغية بدون الختم </div>
-            <div class="car-input d-flex justify-content-between mt-4">
-                <div class="d-flex">
-                   اسم العميل : <span class="d-block  mx-1 text-right"> جميل طربوش  </span>
-                   <!-- <span class="input-border d-block w-75 mx-1"></span> -->
-                </div>
-                <div class="d-flex " >
-                  الجوال : <span class="d-block  mx-1 text-right"> 0504448754</span>
-                  <!-- <span class="input-border d-block w-100 mx-1"></span> -->
-                </div>
-            </div>
-            <div class="car-input d-flex justify-content-between">
-                <div class="d-flex ">
-                   رقم السيارة : <span class="d-block  mx-1 text-right"> 158479</span>
-                   <!-- <span class="input-border d-block w-75 mx-1 text-right">صصص</span> -->
-                </div>
-                <div class="d-flex " >
-                  نوعها : <span class="d-block  mx-1 text-right"> 158479</span>
-                  <!-- <span class="input-border d-block w-100 mx-1"></span> -->
-                </div>
-                <div class="d-flex " >
-                  تاريخ الدخول : <span class="d-block  mx-1 text-right"> {{ Carbon\Carbon::now()->translatedFormat('j-F-Y')}}م</span>
-                   <!-- <span class="input-border d-block w-100 mx-1"></span> -->
-                </div>
-            </div>
 
+        <div class="row my-4  mx-5">
+          <div class="col-1 side-title1"> <span class="fs-18"> تعتبر هذه الشهادة لاغية بدون الختم </div>
+           <div class="ce-car2 col-11  px-1 py-3">
+           <div class="descreption "> <span class="fs-18"> البيان</div>
+              @for($i=0 ; $i < 10  ; $i++)
+                    <div class="border-row text-center h-cell">
+                    </div>
+                @endfor
+            </div>
+            
+            
+
+        </div>
+
+        <div class="row mx-5">
+            <div class="col-6 text-right">
+                    <div class="f-bold fs-14">
+                        تاريخ خروج السيارة: {{ Carbon\Carbon::now()->translatedFormat('j-F-Y')}}م
+                    </div>
+                    <div class="f-bold">
+                        <h5 class="text-center mt-2 mb-1">المستلم</h5>
+                        <div class="d-flex align-items-end my-1">
+                            <div class="h-18  ml-2 ">
+                              الاسم:
+                            </div>
+                            <div class="input-border w-75">
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end my-3">
+                            <div class="h-18 ml-1">
+                              التوقيع:
+                            </div>
+                            <div class="input-border w-75">
+                            </div>
+                        </div>
+                        <div  class="text-left my-2 ">
+                           الختم
+                        </div>
+                    </div>
+            </div>
+            <div class="col-6 py-1 px-2 ce-car" >
+                <!-- <div> -->
+                    <div class="border-b text-center f-bold w-100">
+                    <span class="ffa fs-35">مركز هويدي النسيم </span>   <br>  <span class="fs-19">  الضمان لا يشمل الكسر أو الإهمال </span>   
+                    </div>
+                    <div class="d-flex">
+                        <div class="text-right f-bold my-2">
+                        <div class="fs-16">
+                            مدة الضمان : <span class="fs-14">سنتان  </span> 
+                        </div>
+                        <div class="fs-16">
+                            بداية الضمان : <span class="fs-14">{{ Carbon\Carbon::now()->translatedFormat('j-F-Y')}}  </span>  
+                        </div>
+                        </div>
+                    </div>
+                    
+                <!-- </div> -->
+            </div>
         </div>
 </section>
 

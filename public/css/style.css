@@ -1,8 +1,19 @@
-body{
-    font-family: initial;
-    font-weight: 400;
+@font-face {
+    font-family: ArbFONTS-MO_Nawel;
+    src: url(../fonts/MO_NawelRegular.ttf)
 }
+
+body{
+    font-family: Arial, Helvetica, sans-serif ;
+    /* font-weight: 400; */
+}
+.ffa{
+    font-family: 'ArbFONTS-MO_Nawel' ;
+    /* font-family: 'mo-nawel-regular', sans-serif; */
+}
+
 .section-invoices{
+    position: relative;
     width: 450px;
     margin: 0 auto;
 }
@@ -26,9 +37,9 @@ body{
     justify-content: space-between;
     
 }
-.date-accept div{
+/* .date-accept div{
     margin: auto 0 ;
-}
+} */
 .fs-9{
     font-size: 9px; 
 }
@@ -38,11 +49,23 @@ body{
 .fs-12{
     font-size: 12px; 
 }
+.fs-14{
+    font-size: 14px; 
+}
+.fs-16{
+    font-size: 16px; 
+}
 .fs-18{
     font-size: 18px; 
 }
+.fs-19{
+    font-size: 19px; 
+}
 .fs-26{
     font-size: 26px;   
+}
+.fs-35{
+    font-size: 35px;
 }
 .f-bold{
     font-weight: bold;
@@ -50,12 +73,25 @@ body{
 .h-18{
     height: 18px;
 }
+.h-21{
+    height: 21px;
+}
 .cash-invoice-title{
     line-height: 1;
     border: 1px solid black;
     border-radius: 8px;
     text-align:center;
     padding: 1px 4px;
+}
+.cash-invoice-tax{
+    display: flex;
+
+    width: 94px;
+   font-size: 11px;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align:center;
+    margin-bottom: 1px;
 }
 .name-invoices{
     border-bottom: 1px solid black ;
@@ -122,7 +158,105 @@ height:25px;
       font-size: 12px;
       font-weight: bold;
   }
+  .side-title{
+    position: absolute;
+    right: 9px;
+    transform: rotateZ(179deg);
+    writing-mode: tb-rl;
+    top: 50%;
+    font-size: 19px;
+    font-weight: bold;
+  }
+  .side-title1{
 
+   text-align: center;
+    transform: rotateZ(179deg);
+    writing-mode: tb-rl;
+   
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  .line-div {
+    position: relative;
+    height: 2px;
+    border-bottom: 2px solid black;
+    /* background: black; */
+}
+.line-div div {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    background: white;
+    padding: 0 2px;
+  
+}
+.title-phone-v2{
+    margin: 10px;
+}
+.title-phone-v2 div{
+    display: flex;
+    justify-content: center;
+
+
+    
+}
+.title-phone-v2 .title-v2{
+    margin-left: -4rem;
+}
+.ce-car{
+    border-radius:15px ;
+    border : 1px solid black ;
+    position: relative;
+}
+.ce-car2{
+    border-radius:40px ;
+    border : 1px solid black ;
+    position: relative;
+}
+.ce-car .ce-car-title{
+    line-height: 1;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -23%;
+    background: white;
+    padding: 5px 10px;
+    box-shadow: 0px 2px;
+}
+.ce-car2 .descreption{
+    line-height: 1;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -6%;
+    background: white;
+    padding: 5px 10px;
+    
+}
+.car-input div{
+    font-size: 15px;
+    font-weight: bold;
+    align-items: baseline;
+
+}
+.input-border{
+    border-bottom: 1px dotted black ;
+}
+.border-b{
+    border-bottom: 1px solid black ;
+}
   /* //////////////////////////////////// */
 
   
