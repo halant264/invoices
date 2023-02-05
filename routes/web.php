@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrintController;
-
+use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\InvoiceController ;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,14 @@ use Spatie\Permission\Models\Role;
 */
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']
-    )->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::group(['prefix' => 'invoice'], function() {
+        Route::get('/create', [InvoiceController::class, 'show'])->name('invoce.create');
+        Route::post('/store', [InvoiceController::class, 'store'])->name('invoce.store');
+        Route::get('/q', [InvoiceController::class, 'index'])->name('home');
+    });
+    
 });
 
 

@@ -259,4 +259,9 @@ height:25px;
 }
   /* //////////////////////////////////// */
 
+
+  .card-body .col-from-label{
+
+    text-align: right;
+  }
   

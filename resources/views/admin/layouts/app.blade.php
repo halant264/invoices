@@ -23,6 +23,7 @@
 	<link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
 
 	<link rel="stylesheet" href="{{ asset('css/aiz-core.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <style>
         body {
@@ -30,6 +31,9 @@
         }
     </style>
 
+<script>
+    	var AIZ = AIZ || {};
+		</script>
 </head>
 <body class="">
 
@@ -41,18 +45,18 @@
                     @yield('content')
 				</div>
 				<div class="bg-white text-center py-3 px-15px px-lg-25px mt-auto">
-					<p class="mb-0">&copy; hh</p>
+					<p class="mb-0">&copy; مركز هودي النسيم</p>
 				</div>
 			</div><!-- .aiz-main-content -->
 		</div><!-- .aiz-content-wrapper -->
 	</div><!-- .aiz-main-wrapper -->
 
-
+	<!-- @yield('modal') -->
 
 	<script src="{{ asset('js/vendors.js') }}" ></script>
 	<script src="{{ asset('js/aiz-core.js') }}" ></script>
 
-
+	@yield('script')
     <script type="text/javascript">
 	    @foreach (session('flash_notification', collect())->toArray() as $message)
 	        AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
