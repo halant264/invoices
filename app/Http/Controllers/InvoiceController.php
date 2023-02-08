@@ -73,9 +73,9 @@ class InvoiceController extends Controller
                 ->with('sub_total' , 'total_price');
                 // ->select('*');
     
-        }])->where('id' , $id)->get();
-
-        return view('invoiceClient' , compact(['invoicess' ]));
+        }])->where('id' , $id)->first();
+// dd($invoicess->discreption[0]->sub_total->h);
+        return view('invoiceClient' , compact('invoicess'));
  
     }
 }

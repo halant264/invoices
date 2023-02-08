@@ -6,13 +6,13 @@ setLocale(LC_TIME, 'ar_AE');
 @extends('layouts.my')
 @section('content')
 
-<link rel="stylesheet" href="css/paper.css">
+<link rel="stylesheet" href="/css/paper.css">
 
 <style>@page { size: A5 }</style> 
 
 
 <body class="A5">
-    
+
 <section class="sheet section-invoices padding-10mm">
         <h1 class="header-title text-center">مـركـز هويــدي النسيـم</h1>
         <div class="title-phone px-2 f-bold">
@@ -63,7 +63,7 @@ setLocale(LC_TIME, 'ar_AE');
                 <div class="name-invoices-title ">
                      <span class="h-18 ">المطلوب من المكرم /</span> 
                 </div>
-                <div class="name-invoices justify-content-center"> جميل طربوش   </div>
+                <div class="name-invoices justify-content-center"> {{$invoicess->name}} </div>
                 <div class="name-invoices-title ">
                 <span class="h-18 align-items-end">.Mr</span> 
                 </div>
@@ -104,18 +104,34 @@ setLocale(LC_TIME, 'ar_AE');
                         </div>
                     </div>
                 </div>
+                @php
+                   $countRow = 0 ;
+                @endphp
                 <div class="col-12 p-0 ">
                     <div class="row m-1">
                         <div class="col-3 h-col">
                             <div class=" h-i-sec">
+                                
                             @for($i=0 ; $i < 16  ; $i++)
-                                <div class="d-flex border-row ">
-                                    <div class="s-row" ></div>
+                            @if($countRow < count($invoicess->discreption))
+                            <div class="d-flex border-row ">
+                                    <div class="s-row  fs-12" > c {{$countRow}}</div>
                                     <div class="w-75 text-center h-cell">
-                                        
+                                    {{$invoicess->discreption[0]->sub_total->h}}
+                                    </div>
+                                   @php $countRow                                                                                                                                                                                                                                                                                                                                                             ++  @endphp
+                            </div>
+                           
+                              
+                           @else
+                               <div class="d-flex border-row ">
+                                    <div class="s-row  fs-12" >a</div>
+                                    <div class="w-75 text-center h-cell">
+                                    s
                                     </div>
                                 </div>
-                                @endfor
+                                @endif
+                            @endfor
                             </div>
                         </div>
                         <div class="col-3 h-col">

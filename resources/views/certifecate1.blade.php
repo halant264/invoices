@@ -7,19 +7,18 @@ setLocale(LC_TIME, 'ar_AE');
 ?>
 @extends('layouts.my')
 @section('content')
-<center>
-<br><br>
-<a id="print" href="{{ url('/invoice2') }}" class="btnprn btn">Print Preview</a></center>
-<script type="text/javascript">
-$(document).ready(function(){
-$('.btnprn').printPage();
-});
+<!-- <link rel="stylesheet" href="/css/paper.css"> -->
 
-// const printBtn = document.getElementById('print');
-// printBtn.addEventListener('click' ,function(){
-//     print();
-// })
+<center>
+        <br><br>
+        <a id="print" href="{{ url('/invoice2') }}" class="btnprn btn">Print Preview</a>
+</center>
+<script type="text/javascript">
+        $(document).ready(function(){
+        $('.btnprn').printPage();
+        });
 </script>
+
 <style>@page { size: A5 }</style> 
 <body class="A5">
 

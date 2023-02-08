@@ -9,12 +9,10 @@ class PrintController extends Controller
 {
     public function index()
       {
-            
-            return view('printstudent');
+            return view('invoice');
       }
       public function prnpriview()
       {
-            
-            return view('students');
+            return view('invoiceClient');
       }
 }
