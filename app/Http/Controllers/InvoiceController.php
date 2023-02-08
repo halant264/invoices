@@ -15,9 +15,6 @@ class InvoiceController extends Controller
     }
 
     public function store(Request $req){
-      
-
-       
         $invoice_client = new invoice_client(); 
         $invoice_client->name = $req->name ;
         $invoice_client->warranty = $req->warranty ;
@@ -45,10 +42,40 @@ class InvoiceController extends Controller
 
         }
 
-
-        
         return("Done");
 
 
+    }
+
+    public function index(){
+
+        $invoicess= invoice_client::with(['discreption' => function($q){
+                $q->with('sub_total' , 'total_price');
+        }])->get();
+
+        $invoicess2= invoice_client::with(['discreption' => function($q){
+                $q
+                ->with('sub_total' , 'total_price');
+                // ->select('*');
+    
+        }])->where('id' , 4)->get();
+
+        // $products = $invoicess->paginate(15);
+        $type = 'All';
+
+        return view('admin.invoices.invoices' , compact(['invoicess' , /*'invoicess' => $products  , */ 'type'  ]));
+ 
+    }
+    public function viewInvoice($id){
+
+        $invoicess= invoice_client::with(['discreption' => function($q){
+                $q
+                ->with('sub_total' , 'total_price');
+                // ->select('*');
+    
+        }])->where('id' , $id)->get();
+
+        return view('invoiceClient' , compact(['invoicess' ]));
+ 
     }
 }

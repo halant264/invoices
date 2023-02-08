@@ -17,7 +17,7 @@
 	<title>هويدي النسيم</title>
 
 	<!-- google font -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"> -->
 
 	<!-- aiz core css -->
 	<link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
@@ -30,10 +30,31 @@
             font-size: 12px;
         }
     </style>
-
 <script>
     	var AIZ = AIZ || {};
-		</script>
+        AIZ.local = {
+            nothing_selected: '{!! translate('Nothing selected', null, true) !!}',
+            nothing_found: '{!! translate('Nothing found', null, true) !!}',
+            choose_file: '{{ translate('Choose file') }}',
+            file_selected: '{{ translate('File selected') }}',
+            files_selected: '{{ translate('Files selected') }}',
+            add_more_files: '{{ translate('Add more files') }}',
+            adding_more_files: '{{ translate('Adding more files') }}',
+            drop_files_here_paste_or: '{{ translate('Drop files here, paste or') }}',
+            browse: '{{ translate('Browse') }}',
+            upload_complete: '{{ translate('Upload complete') }}',
+            upload_paused: '{{ translate('Upload paused') }}',
+            resume_upload: '{{ translate('Resume upload') }}',
+            pause_upload: '{{ translate('Pause upload') }}',
+            retry_upload: '{{ translate('Retry upload') }}',
+            cancel_upload: '{{ translate('Cancel upload') }}',
+            uploading: '{{ translate('Uploading') }}',
+            processing: '{{ translate('Processing') }}',
+            complete: '{{ translate('Complete') }}',
+            file: '{{ translate('File') }}',
+            files: '{{ translate('Files') }}',
+        }
+	</script>
 </head>
 <body class="">
 

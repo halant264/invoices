@@ -9,12 +9,12 @@ class PrintController extends Controller
 {
     public function index()
       {
-            $students = Addresses::all();
-            return view('printstudent')->with('students', $students);;
+            
+            return view('printstudent');
       }
       public function prnpriview()
       {
-            $students = Addresses::all();
-            return view('students')->with('students', $students);;
+            
+            return view('students');
       }
 }

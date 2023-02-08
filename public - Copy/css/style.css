@@ -1,0 +1,267 @@
+@font-face {
+    font-family: ArbFONTS-MO_Nawel;
+    src: url(../fonts/MO_NawelRegular.ttf)
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif ;
+    /* font-weight: 400; */
+}
+.ffa{
+    font-family: 'ArbFONTS-MO_Nawel' ;
+    /* font-family: 'mo-nawel-regular', sans-serif; */
+}
+
+.section-invoices{
+    position: relative;
+    width: 450px;
+    margin: 0 auto;
+}
+.section-invoices .header-title{
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0px 4rem;
+    text-align: center;
+}
+.title-phone{
+    padding: 0 2rem;
+}
+.title-phone div{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.date-accept {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+/* .date-accept div{
+    margin: auto 0 ;
+} */
+.fs-9{
+    font-size: 9px; 
+}
+.fs-11{
+    font-size: 11px; 
+}
+.fs-12{
+    font-size: 12px; 
+}
+.fs-14{
+    font-size: 14px; 
+}
+.fs-16{
+    font-size: 16px; 
+}
+.fs-18{
+    font-size: 18px; 
+}
+.fs-19{
+    font-size: 19px; 
+}
+.fs-26{
+    font-size: 26px;   
+}
+.fs-35{
+    font-size: 35px;
+}
+.f-bold{
+    font-weight: bold;
+}
+.h-18{
+    height: 18px;
+}
+.h-21{
+    height: 21px;
+}
+.cash-invoice-title{
+    line-height: 1;
+    border: 1px solid black;
+    border-radius: 8px;
+    text-align:center;
+    padding: 1px 4px;
+}
+.cash-invoice-tax{
+    display: flex;
+
+    width: 94px;
+   font-size: 11px;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align:center;
+    margin-bottom: 1px;
+}
+.name-invoices{
+    border-bottom: 1px solid black ;
+    padding-bottom:1px;
+    margin-right: 10px ;
+    width: 100% ;
+}
+.name-invoices-title{
+    white-space: nowrap ;
+    position: relative;
+}
+.name-invoices-title::after{
+    top: 100%;
+}
+
+.s-content{
+    border-radius: 5px;
+    border: 1px solid black ;
+    /* height:445px; */
+}
+.header-invoice .h-col{
+    height: 50px;
+} 
+.header-invoice .h-i-sec{
+    border-radius: 5px;
+    border: 1px solid black ;
+    width : 100% ;
+    height: 100%;
+    padding: 1px 2px;
+    text-align: center;
+} 
+
+ .h-col{
+    padding: 0 1px;
+} 
+ .h-i-sec{
+    border-radius: 5px;
+    border: 1px solid black ;
+    width : 100% ;
+    padding: 0 2px;
+    text-align: center;
+}
+.border-top{
+    border-top: 1px solid black ;
+}
+.border-row:not(:last-of-type){
+    border-bottom: 1px dotted black ;
+}
+.s-row{
+width: 25%;
+/* display: flex; */
+justify-content: end;
+/* background: red; */
+border-left: 1px solid black;
+
+}
+.h-cell{
+height:25px;
+}
+.footer-invoice .h-i-sec{
+    height :35px
+  }
+  .in-details{
+      font-size: 12px;
+      font-weight: bold;
+  }
+  .side-title{
+    position: absolute;
+    right: 9px;
+    transform: rotateZ(179deg);
+    writing-mode: tb-rl;
+    top: 50%;
+    font-size: 19px;
+    font-weight: bold;
+  }
+  .side-title1{
+
+   text-align: center;
+    transform: rotateZ(179deg);
+    writing-mode: tb-rl;
+   
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  .line-div {
+    position: relative;
+    height: 2px;
+    border-bottom: 2px solid black;
+    /* background: black; */
+}
+.line-div div {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    background: white;
+    padding: 0 2px;
+  
+}
+.title-phone-v2{
+    margin: 10px;
+}
+.title-phone-v2 div{
+    display: flex;
+    justify-content: center;
+
+
+    
+}
+.title-phone-v2 .title-v2{
+    margin-left: -4rem;
+}
+.ce-car{
+    border-radius:15px ;
+    border : 1px solid black ;
+    position: relative;
+}
+.ce-car2{
+    border-radius:40px ;
+    border : 1px solid black ;
+    position: relative;
+}
+.ce-car .ce-car-title{
+    line-height: 1;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -23%;
+    background: white;
+    padding: 5px 10px;
+    box-shadow: 0px 2px;
+}
+.ce-car2 .descreption{
+    line-height: 1;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -6%;
+    background: white;
+    padding: 5px 10px;
+    
+}
+.car-input div{
+    font-size: 15px;
+    font-weight: bold;
+    align-items: baseline;
+
+}
+.input-border{
+    border-bottom: 1px dotted black ;
+}
+.border-b{
+    border-bottom: 1px solid black ;
+}
+  /* //////////////////////////////////// */
+
+
+  .card-body .col-from-label{
+
+    text-align: right;
+  }
+  
