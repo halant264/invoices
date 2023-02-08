@@ -112,7 +112,7 @@ setLocale(LC_TIME, 'ar_AE');
                         <div class="col-3 h-col">
                             <div class=" h-i-sec">
                                 
-                            @for($i=0 ; $i < 16  ; $i++)
+                            @for($i=0 ; $i < 16  ; $i++) 
                             @if($countRow < count($invoicess->discreption))
                             <div class="d-flex border-row ">
                                     <div class="s-row  fs-12" > c {{$countRow}}</div>
