@@ -10,7 +10,6 @@
 	<meta charset="utf-8">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
 
 	<!-- Favicon -->
 	<link rel="icon" href="">
@@ -18,12 +17,16 @@
 
 	<!-- google font -->
 	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
 
 	<!-- aiz core css -->
-	<link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/vendors.css') }}">
 
-	<link rel="stylesheet" href="{{ asset('css/aiz-core.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/aiz-core.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+
+
+
 
     <style>
         body {

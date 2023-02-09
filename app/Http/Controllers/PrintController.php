@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Addresses;
+use App\Models\invoice_client;
+
 
 class PrintController extends Controller
 {
@@ -11,8 +13,18 @@ class PrintController extends Controller
       {
             return view('invoice');
       }
-      public function prnpriview()
+      public function prnpriview($id)
       {
-            return view('invoiceClient');
+
+       
+            $invoicess= invoice_client::with(['discreption' => function($q){
+                  $q
+                  ->with('sub_total' , 'total_price');
+                  // ->select('*');
+       
+          }])->where('id' , $id)->first();
+       // dd($invoicess->discreption);
+
+          return view('invoiceClient' , compact('invoicess'));
       }
 }

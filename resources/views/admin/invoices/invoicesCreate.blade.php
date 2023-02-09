@@ -41,15 +41,7 @@
                         <h5 class="mb-0 h6">الوصف</h5>
                     </div>
                     <div class="card-body ">
-                        <div class="form-group row">
-                            <label class="col-md-3 col-from-label">القيمة الاجمالية</label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="priceI1" placeholder="H" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="priceJ1" placeholder="SR" required>
-                            </div>
-                        </div>
+                        
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">سعر الوحدة</label>
                             <div class="col-md-4">
@@ -65,10 +57,20 @@
                                 <input type="number" lang="en" class="form-control" name="amountI1" value="1" min="1" required>
                             </div>
                         </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-md-3 col-from-label">القيمة الاجمالية</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="priceI1" placeholder="H" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="priceJ1" placeholder="SR" required>
+                            </div>
+                        </div> -->
+                       
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">البيان<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control " name="dis1" placeholder="{{ translate('Type and hit enter to add a tag') }}">
+                                <input type="text" class="form-control " name="dis1" placeholder="البيان">
                             </div>
                         </div>
                         
@@ -86,11 +88,11 @@
             <div class="col-12">
                 <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="Third group">
-                        <button type="submit" name="button" value="unpublish" class="btn btn-primary action-btn">{{ translate('Save & Unpublish') }}</button>
+                        <button type="submit" name="button" value="print" class="btn btn-primary action-btn">حفظ وطباعة</button>
                     </div>
-                    <!-- <div class="btn-group" role="group" aria-label="Second group">
-                        <button type="submit" name="button" value="publish" class="btn btn-success action-btn">{{ translate('Save & Publish') }}</button>
-                    </div> -->
+                    <div class="btn-group" role="group" aria-label="Second group">
+                        <button type="submit" name="button" value="save" class="btn btn-success action-btn">حفظ</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,15 +114,7 @@
             '<h5 class="mb-0 h6">وصف  '+j+'</h5>'+
             '</div>'  + 
             '<div class="card-body">'+
-            '<div class="form-group row">'+
-            '<label class="col-md-3 col-from-label">القيمة الاجمالية</label>'  +
-            '<div class="col-md-4">'        +
-            '<input type="number" class="form-control" name="priceI'+j+'" placeholder="H" required>'     +
-            '</div>'   +
-            '<div class="col-md-4">' +
-            '<input type="number" class="form-control" name="priceJ'+j+'" placeholder="SR" required>' +
-            '</div>' +
-            '</div>' +
+
             '<div class="form-group row">'+
             '<label class="col-md-3 col-from-label">سعر الوحدة</label>' +
             '<div class="col-md-4">'+
@@ -136,10 +130,20 @@
             '<input type="number" lang="en" class="form-control" name="amountI'+j+'" value="1" min="1" required>' +
             '</div>' +
             '</div>'  +
+            // '<div class="form-group row">'+
+            // '<label class="col-md-3 col-from-label">القيمة الاجمالية</label>'  +
+            // '<div class="col-md-4">'        +
+            // '<input type="number" class="form-control" name="priceI'+j+'" placeholder="H" required>'     +
+            // '</div>'   +
+            // '<div class="col-md-4">' +
+            // '<input type="number" class="form-control" name="priceJ'+j+'" placeholder="SR" required>' +
+            // '</div>' +
+            // '</div>' +
+          
             '<div class="form-group row">'+
             '<label class="col-md-3 col-from-label">البيان<span class="text-danger">*</span></label>' +
             '<div class="col-md-8">'+
-            ' <input type="text" class="form-control " name="dis'+j+'" placeholder="{{ translate('Type and hit enter to add a tag') }}">' +
+            ' <input type="text" class="form-control " name="dis'+j+'" placeholder="البيان">' +
             '</div>' +
             '</div>' +
             '</div>'           

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\HomeController ;
 use App\Http\Controllers\InvoiceController ;
+use App\Http\Controllers\rintController ;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -25,12 +26,16 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['prefix' => 'invoice'], function() {
         Route::get('/create', [InvoiceController::class, 'show'])->name('invoce.create');
         Route::post('/store', [InvoiceController::class, 'store'])->name('invoce.store');
+        Route::delete('/delete', [InvoiceController::class, 'delete'])->name('invoce.delete');
         Route::get('/index', [InvoiceController::class, 'index'])->name('invoce.index');
         Route::get('/viewInvoice/{id}', [InvoiceController::class, 'viewInvoice'])->name('invoce.viewInvoice');
+        Route::get('/printIn', [InvoiceController::class, 'printIn'])->name('invoce.printIn');
+        Route::get('/prnpriview/{id}',[PrintController::class, 'prnpriview'])->name('print');
+   
     });
     
 });
-
+Route::resource('rint', rintController::class);
 
 
 Route::get('/lang', function (){
@@ -39,7 +44,6 @@ Route::get('/lang', function (){
 })->middleware('lang')->name('language.change');
 
 Route::get('/students',[PrintController::class, 'index']);
-Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
 Route::get('/test', function(){
     $role = Role::where('name' , 'Super-Admin')->first();
     $permis = Permission::all();
@@ -53,6 +57,6 @@ Route::get('/test', function(){
 Route::get('/invoice2', function(){
     return view('invoice');
 });
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);

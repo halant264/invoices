@@ -10,7 +10,7 @@
             <h1 class="h3">جميع الفواتير</h1>
         </div>
             <div class="col text-left">
-                <a href="{{ route('home') }}" class="btn btn-circle btn-info">
+                <a href="{{ route('invoce.create') }}" class="btn btn-circle btn-info">
                     <span>انشاء فاتورة</span>
                 </a>
             </div>
@@ -19,7 +19,7 @@
 <br>
 
 <div class="card">
-    <form class="" id="sort_products" action="" method="GET">
+    <!-- <form class="" id="sort_products" action="" method="GET"> -->
         <div class="card-header row gutters-5">
             <div class="col">
                 <h5 class="mb-md-0 h6 text-right">جميع الفواتير</h5>
@@ -53,38 +53,60 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($invoicess as $key => $product)
+                    @foreach($invoicess as $value)
                     <tr>
                         <td>
-                           f
+                            {{$value->name}}
                         </td>
                         <td>
-                            ش
+                             {{$value->warranty}}
                         </td>
                         <td>
-                            ش
+                           {{$value->printed}}
                         </td>
                         <td class="text-center">
-                            <a class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('invoce.viewInvoice' , ['id'=>$product->id]) }}" target="_blank" title="{{ translate('View') }}">
+                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm btnprn"  href="{{ route('invoce.viewInvoice' , ['id'=>$value->id]) }}"  title="{{ translate('View') }}">
                                 <i class="las la-eye"></i>
                             </a>
-                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('home', ['id'=>$product->id, 'type'=>$type]  )}}" title="{{ translate('Duplicate') }}">
+                            <script type="text/javascript">
+                                $(document).ready(function(){
+                                $('.btnprn').printPage();
+                                });
+                            </script>
+                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('home', ['id'=>$value->id, 'type'=>$type]  )}}" title="{{ translate('Duplicate') }}">
                                 <i class="las la-copy"></i>
                             </a>
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('home', $product->id)}}" title="{{ translate('Delete') }}">
-                                <i class="las la-trash"></i>
+                            <a class="btn   btn-circle btn-sm px-0">
+                            <form action="{{ route('invoce.delete' ) }}" method="POST">
+                                <!-- <a class="btn btn-primary" href="#">Edit</a> -->
+                                @csrf
+                                @method('DELETE')
+                                  <input type="hidden" value="{{$value->id}}" name="id_d">
+                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delte" title="{{ translate('Delete') }}">
+                                  <i class="las la-trash"></i>
+                                  </button>
+                            </form>
                             </a>
+                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoce.delete')}}" title="{{ translate('Delete') }}">
+                                <i class="las la-trash"></i>
+                            </a> -->
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="aiz-pagination">
-                
+            {{ $invoicess->appends(request()->input())->links() }}
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 </div>
+
+<script type="text/javascript">
+        $(document).ready(function(){
+        $('.btnprn').printPage();
+        });
+</script>
 
 @endsection
 
@@ -186,9 +208,9 @@
             });
         }
 
-        function sort_products(el){
-            $('#sort_products').submit();
-        }
+        // function sort_products(el){
+        //     $('#sort_products').submit();
+        // }
         
         function bulk_delete() {
             var data = new FormData($('#sort_products')[0]);
