@@ -18,8 +18,7 @@ setLocale(LC_TIME, 'ar_AE');
 
 
 <body class="A5">
-
-    <section class="sheet section-invoices padding-10mm">
+        <section class="sheet section-invoices padding-10mm">
         <h1 class="header-title text-center">مـركـز هويــدي النسيـم</h1>
         <div class="title-phone px-2 f-bold">
             <div class="d-flex justify-content-between mt-1 px-3">

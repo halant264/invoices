@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> هويدي النسيم</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -16,44 +16,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-	<!-- aiz core css -->
-
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script>
-    	var AIZ = AIZ || {};
-        AIZ.local = {
-            nothing_selected: '{!! translate('Nothing selected', null, true) !!}',
-            nothing_found: '{!! translate('Nothing found', null, true) !!}',
-            choose_file: '{{ translate('Choose file') }}',
-            file_selected: '{{ translate('File selected') }}',
-            files_selected: '{{ translate('Files selected') }}',
-            add_more_files: '{{ translate('Add more files') }}',
-            adding_more_files: '{{ translate('Adding more files') }}',
-            drop_files_here_paste_or: '{{ translate('Drop files here, paste or') }}',
-            browse: '{{ translate('Browse') }}',
-            upload_complete: '{{ translate('Upload complete') }}',
-            upload_paused: '{{ translate('Upload paused') }}',
-            resume_upload: '{{ translate('Resume upload') }}',
-            pause_upload: '{{ translate('Pause upload') }}',
-            retry_upload: '{{ translate('Retry upload') }}',
-            cancel_upload: '{{ translate('Cancel upload') }}',
-            uploading: '{{ translate('Uploading') }}',
-            processing: '{{ translate('Processing') }}',
-            complete: '{{ translate('Complete') }}',
-            file: '{{ translate('File') }}',
-            files: '{{ translate('Files') }}',
-        }
-	</script>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                   هويدي النسيم
+                    {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

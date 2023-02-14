@@ -39,7 +39,13 @@
                         </a>
                     </li>
                     <li class="aiz-side-nav-item">
-                        <a href="{{ route('home') }}" class="aiz-side-nav-link">
+                        <a href="{{ route('certificate.index') }}" class="aiz-side-nav-link">
+                             <i class="las la-file-invoice aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">جميع شهادات دخول السيارة</span>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <a href="{{ route('certificate.create') }}" class="aiz-side-nav-link">
                         <i class="las la-file-invoice aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">انشاء شهادة دخول سيارة</span>
                         </a>

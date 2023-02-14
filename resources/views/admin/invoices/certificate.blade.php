@@ -1,5 +1,7 @@
+<?php
+use Carbon\Carbon;
+?>
 @extends('admin.layouts.app')
-
 @section('content')
 
 
@@ -7,26 +9,31 @@
 <div class="aiz-titlebar text-left mt-2 mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">جميع الفواتير</h1>
+            <h1 class="h3">جميع الشهادات</h1>
         </div>
             <div class="col text-left">
-                <a href="{{ route('invoce.create') }}" class="btn btn-circle btn-info">
-                    <span>انشاء فاتورة</span>
+                <a href="{{ route('certificate.create') }}" class="btn btn-circle btn-info">
+                    <span>انشاء شهادة</span>
                 </a>
             </div>
     </div>
 </div>
 <br>
 
+@if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 
 <div class="card">
     <!-- <form class="" id="sort_products" action="" method="GET"> -->
         <div class="card-header row gutters-5">
             <div class="col">
-                <h5 class="mb-md-0 h6 text-right">جميع الفواتير</h5>
+                <h5 class="mb-md-0 h6 text-right">جميع الشهادات</h5>
             </div>
             <div class="col-md-2 ml-auto">
-                <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type" onchange="sort_products()">
+                <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type" >
                     <option value="">فرز </option>
                 </select>
             </div>
@@ -42,33 +49,42 @@
                 <thead>
                     <tr>
                         <th>اسم المكرم</th>
+                        <th> رقم السيارة</th>
+                        <th>موديل السيارة</th>
                         <th >مدة الضمان</th>
-                        <th >تمت الطباعة</th>
+                        <th >تاريخ الخروج </th>
                         <th  class="text-center">خيارات</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($invoicess as $value)
+                    @foreach($certificate as $value)
                     <tr>
                         <td>
-                            {{$value->name}}
+                            {{$value->name_client}}
+                        </td>
+                        <td>
+                             {{$value->no_car}}
+                        </td>
+                        <td>
+                           {{$value->model_car}}
                         </td>
                         <td>
                              {{$value->warranty}}
                         </td>
                         <td>
-                           {{$value->printed}}
+                            {{Carbon::createFromFormat('Y-m-d H:i:s', $value->exit_date)->format('m/d/Y')}} 
                         </td>
                         <td class="text-center">
                             <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('invoce.viewInvoice' , ['id'=>$value->id]) }}"  title="اظهار">
                                 <i class="las la-eye"></i>
                             </a>
                          
-                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('home', ['id'=>$value->id, 'type'=>$type]  )}}" title="تعديل">
+                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('certificate.edit', $value->id  )}}" title="تعديل">
                                 <i class="las la-edit"></i>
                             </a>
-                            <a class="btn   btn-circle btn-sm px-0"> 
-                            <form action="{{ route('invoce.delete' ) }}" method="POST">
+                            <a class="btn   btn-circle btn-sm px-0">
+                                
+                            <form action="{{ route('certificate.destroy' , $value->id ) }}" method="POST">
                                 <!-- <a class="btn btn-primary" href="#">Edit</a> -->
                                 @csrf
                                 @method('DELETE')
@@ -78,16 +94,14 @@
                                   </button>
                             </form>
                             </a>
-                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoce.delete')}}" title="{{ translate('Delete') }}">
-                                <i class="las la-trash"></i>
-                            </a> -->
+                   
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="aiz-pagination">
-            {{ $invoicess->appends(request()->input())->links() }}
+            {{ $certificate->appends(request()->input())->links() }}
             </div>
         </div>
     <!-- </form> -->

@@ -5,65 +5,63 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="app-url" content="">
 	<meta name="file-base-url" content="">
-
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 	<!-- Favicon -->
 	<link rel="icon" href="">
 	<title>هويدي النسيم</title>
 
-	<!-- google font -->
-	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"> -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+
+	<!-- <link href="https://www.dafontfree.net/embed/bW8tbmF3ZWwtcmVndWxhciZkYXRhLzQxL20vOTc5ODUvTU9fTmF3ZWwudHRm" rel="stylesheet" type="text/css"/> -->
+
 
 	<!-- aiz core css -->
 	<link rel="stylesheet" href="{{ asset('/css/vendors.css') }}">
-
 	<link rel="stylesheet" href="{{ asset('/css/aiz-core.css') }}">
-	<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
-
-
+	<script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="{{ asset('/js/jPrintPages.js') }}"></script>
+	<link rel="stylesheet" href="/css/boot.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
 
     <style>
         body {
             font-size: 12px;
         }
     </style>
-<script>
+ <script>
     	var AIZ = AIZ || {};
         AIZ.local = {
-            nothing_selected: '{!! translate('Nothing selected', null, true) !!}',
-            nothing_found: '{!! translate('Nothing found', null, true) !!}',
-            choose_file: '{{ translate('Choose file') }}',
-            file_selected: '{{ translate('File selected') }}',
-            files_selected: '{{ translate('Files selected') }}',
-            add_more_files: '{{ translate('Add more files') }}',
-            adding_more_files: '{{ translate('Adding more files') }}',
-            drop_files_here_paste_or: '{{ translate('Drop files here, paste or') }}',
-            browse: '{{ translate('Browse') }}',
-            upload_complete: '{{ translate('Upload complete') }}',
-            upload_paused: '{{ translate('Upload paused') }}',
-            resume_upload: '{{ translate('Resume upload') }}',
-            pause_upload: '{{ translate('Pause upload') }}',
-            retry_upload: '{{ translate('Retry upload') }}',
-            cancel_upload: '{{ translate('Cancel upload') }}',
-            uploading: '{{ translate('Uploading') }}',
-            processing: '{{ translate('Processing') }}',
-            complete: '{{ translate('Complete') }}',
-            file: '{{ translate('File') }}',
-            files: '{{ translate('Files') }}',
+            nothing_selected: '{!! translate("Nothing selected", null, true) !!}',
+            nothing_found: '{!! translate("Nothing found", null, true) !!}',
+            choose_file: '{{ translate("Choose file") }}',
+            file_selected: '{{ translate("File selected") }}',
+            files_selected: '{{ translate("Files selected") }}',
+            add_more_files: '{{ translate("Add more files") }}',
+            adding_more_files: '{{ translate("Adding more files") }}',
+            drop_files_here_paste_or: '{{ translate("Drop files here, paste or") }}',
+            browse: '{{ translate("Browse") }}',
+            upload_complete: '{{ translate("Upload complete") }}',
+            upload_paused: '{{ translate("Upload paused") }}',
+            resume_upload: '{{ translate("Resume upload") }}',
+            pause_upload: '{{ translate("Pause upload") }}',
+            retry_upload: '{{ translate("Retry upload") }}',
+            cancel_upload: '{{ translate("Cancel upload") }}',
+            uploading: '{{ translate("Uploading") }}',
+            processing: '{{ translate("Processing") }}',
+            complete: '{{ translate("Complete") }}',
+            file: '{{ translate("File") }}',
+            files: '{{ translate("Files") }}',
         }
 	</script>
 </head>
 <body class="">
 
-	<div class="aiz-main-wrapper">
+	<div class="aiz-main-wrapper ">
         @include('admin.side.admin_sidenav')
-		<div class="aiz-content-wrapper">
+		<div class="aiz-content-wrapper pt-2">
 			<div class="aiz-main-content">
 				<div class="px-15px px-lg-25px">
                     @yield('content')
@@ -82,9 +80,9 @@
 
 	@yield('script')
     <script type="text/javascript">
-	    @foreach (session('flash_notification', collect())->toArray() as $message)
-	        AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
-	    @endforeach
+	    // @foreach (session('flash_notification', collect())->toArray() as $message)
+	    //     AIZ.plugins.notify("{{ $message['level'] }}", "{{ $message['message'] }}");
+	    // @endforeach
 
 
         if ($('#lang-change').length > 0) {
@@ -93,7 +91,7 @@
                     e.preventDefault();
                     var $this = $(this);
                     var locale = $this.data('flag');
-                    $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
+                    $.post('{{ route("language.change") }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
                         location.reload();
                     });
 

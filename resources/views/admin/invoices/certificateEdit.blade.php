@@ -1,98 +1,92 @@
+<?php
+use Carbon\Carbon;
+?>
 @extends('admin.layouts.app')
-
 @section('content')
 
 
 
 <div class="aiz-titlebar text-right mt-2 mb-3">
-    <h5 class="mb-0 h6">انشاء فاتورة جديدة</h5>
+    <h5 class="mb-0 h6">انشاء شهادة جديدة</h5>
 </div>
 <div class="">
-    <form class="form form-horizontal mar-top" action="{{route('invoce.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
+    <form class="form form-horizontal mar-top" action="{{route('certificate.update' , $certificate->id)}}" method="POST" enctype="multipart/form-data" id="choice_form">
         <div class="row gutters-5">
             <div class="col-lg-12">
                 @csrf
-                <input type="hidden" name="added_by" value="admin">
-                <input type="hidden" name="j" value="1" id="addedJ">
+                @method('PUT')
+                
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0 h6">معلومات الفاتورة </h5>
+                        <h5 class="mb-0 h6">معلومات الشهادة </h5>
                     </div>
                     <div class="card-body">
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">اسم المكرم <span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="name" placeholder="اسم المكرم"  required>
+                                <input type="text" class="form-control" name="name_client" value="{{ $certificate->name_client }}" placeholder="اسم المكرم"  required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">الجوال  <span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="mobile" value="{{ $certificate->mobile }}" placeholder="الجوال "  required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">رقم السيارة<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="no_car" value="{{ $certificate->no_car }}" placeholder="رقم السيارة"  required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">نوع السيارة<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="model_car" value="{{ $certificate->model_car }}" placeholder="نوع السيارة"  required>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="category">
+                            <label class="col-md-3 col-from-label">تاريخ الدخول</label>
+                            <div class="col-md-8">
+                            <input type="date" class="form-control" name="entry_date" value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->entry_date)->format('Y-m-d')}}" placeholder="تاريخ الدخول"  >
+                            </div>
+                        </div>
+                        <div class="form-group row" id="category">
+                            <label class="col-md-3 col-from-label">تاريخ الخروج</label>
+                            <div class="col-md-8">
+                            <input type="date" class="form-control" name="exit_date" value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->exit_date)->format('Y-m-d') }}" placeholder="تاريخ الخروج"  >
                             </div>
                         </div>
                         <div class="form-group row" id="category">
                             <label class="col-md-3 col-from-label">مدة الضمان<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                            <input type="text" class="form-control" name="warranty" placeholder="مدة الضمان"  required>
+                            <input type="text" class="form-control" name="warranty" value="{{ $certificate->warranty }}" placeholder="مدة الضمان" required>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <input type="hidden" name="added_by" value="admin">
-                <div class="card add-to">
-                    <div class="card-header">
-                        <h5 class="mb-0 h6">الوصف</h5>
-                    </div>
-                    <div class="card-body ">
-                        
-                        <div class="form-group row">
-                            <label class="col-md-3 col-from-label">سعر الوحدة</label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="unitI1" placeholder="H" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="unitJ1" placeholder="SR" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-from-label">العدد <span class="text-danger">*</span></label>
+                        <div class="form-group row" id="category">
+                            <label class="col-md-3 col-from-label">بداية الضمان<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="number" lang="en" class="form-control" name="amountI1" value="1" min="1" required>
+                            <input type="date" class="form-control" name="warranty_date" value="{{ Carbon::createFromFormat('Y-m-d H:i:s',$certificate->warranty_date)->format('Y-m-d') }}" placeholder="بداية الضمان"  required>
                             </div>
                         </div>
-                        <!-- <div class="form-group row">
-                            <label class="col-md-3 col-from-label">القيمة الاجمالية</label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="priceI1" placeholder="H" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="priceJ1" placeholder="SR" required>
-                            </div>
-                        </div> -->
-                       
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">البيان<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control " name="dis1" placeholder="البيان">
+                                <input type="textlarge" maxlength="4" size="4" class="form-control" name="dis" value="{{ $certificate->dis }}" placeholder="البيان"  required>
                             </div>
                         </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-            <div class="plus-section btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="Third group">
-                        <div  class=" btn btn-info action-btn">اضافة وصف </div>
                     </div>
                 </div>
             </div>
 
+            <div class="col-lg-12">
+
             <div class="col-12">
                 <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="Third group">
-                        <button type="submit" name="button" value="print" class="btn btn-primary action-btn">حفظ وطباعة</button>
+                        <button type="submit" name="button" value="print" class="btn btn-primary action-btn">تعديل </button>
                     </div>
-                    <div class="btn-group" role="group" aria-label="Second group">
-                        <button type="submit" name="button" value="save" class="btn btn-success action-btn">حفظ</button>
-                    </div>
+            
                 </div>
             </div>
         </div>
