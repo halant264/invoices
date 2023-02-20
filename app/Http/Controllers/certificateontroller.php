@@ -70,7 +70,7 @@ class certificateontroller extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -114,4 +114,17 @@ class certificateontroller extends Controller
         $certificate->delete();
         return redirect()->route('certificate.index');
     }
+
+    public function certificateView($id)
+    {
+        $certificate= certificate::find($id);
+        return view('certifecateView' , compact('certificate'));
+    }
+
+    public function certificatePrint( certificate $id)
+    {
+        $certificate = $id;
+        return view('certifecatePrint' , compact('certificate'));
+    }
+
 }

@@ -62,7 +62,7 @@ setLocale(LC_TIME, 'ar_AE');
                 الموافق : {{ Carbon\Carbon::now()->translatedFormat('l/j/F/Y')}}م
             </div>
 
-        </div>
+        </div> 
         <div class="title-phone px-2 f-bold">
             <div class="d-flex w-100 align-items-end">
                 <div class="name-invoices-title ">

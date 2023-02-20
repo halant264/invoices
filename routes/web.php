@@ -36,6 +36,8 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
         Route::resource('certificate' , certificateontroller::class);
+        Route::get('/certificateView/{id}', [certificateontroller::class, 'certificateView'])->name('certificate.certificateView');
+        Route::get('/certificatePrint/{id}', [certificateontroller::class, 'certificatePrint'])->name('certificate.certificatePrint');
 
 
     
@@ -48,7 +50,7 @@ Route::get('/lang', function (){
     return back();
 })->middleware('lang')->name('language.change');
 
-Route::get('/students',[PrintController::class, 'index']);
+// Route::get('/students',[PrintController::class, 'index']);
 Route::get('/test', function(){
     $role = Role::where('name' , 'Super-Admin')->first();
     $permis = Permission::all();

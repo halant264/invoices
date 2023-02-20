@@ -75,7 +75,7 @@ use Carbon\Carbon;
                             {{Carbon::createFromFormat('Y-m-d H:i:s', $value->exit_date)->format('m/d/Y')}} 
                         </td>
                         <td class="text-center">
-                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('invoce.viewInvoice' , ['id'=>$value->id]) }}"  title="اظهار">
+                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('certificate.certificateView' , ['id'=>$value->id]) }}"  title="اظهار">
                                 <i class="las la-eye"></i>
                             </a>
                          
