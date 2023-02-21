@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 <link rel="stylesheet" href="/css/boot.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/paper.css">
 <center>
         <br><br>
         <a id="print" href="{{ route('certificate.certificatePrint' , ['id' => $certificate->id ]) }}" class="btnprn btn">Print Preview</a>

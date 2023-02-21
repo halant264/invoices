@@ -9,6 +9,7 @@ use Carbon\Carbon;
 
 <link rel="stylesheet" href="/css/boot.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/paper.css">
 
 <body class="A5">
     

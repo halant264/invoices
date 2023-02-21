@@ -10,7 +10,7 @@ setLocale(LC_TIME, 'ar_AE');
 
 <center>
         <br><br>
-        <a id="print" href="{{ route('invoce.viewInvoice' , ['id' => 22]) }}" class="btnprn btn">Print Preview</a>
+        <a id="print" href="{{ route('invoice.viewInvoice' , ['id' => 22]) }}" class="btnprn btn">Print Preview</a>
 </center>
 <script type="text/javascript">
         $(document).ready(function(){

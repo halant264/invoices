@@ -21,10 +21,10 @@ use Carbon\Carbon;
 <br>
 
 @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+<div class="alert alert-success text-center" role="alert">
+       {{ session('success') }}
+</div>
+@endif
 
 <div class="card">
     <!-- <form class="" id="sort_products" action="" method="GET"> -->

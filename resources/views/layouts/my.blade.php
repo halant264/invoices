@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="fa" />
 
-
+<title>هويدي النسيم</title>
 
 <link href="https://www.dafontfree.net/embed/bW8tbmF3ZWwtcmVndWxhciZkYXRhLzQxL20vOTc5ODUvTU9fTmF3ZWwudHRm" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="{{ asset('/js/jquery-2.2.4.min.js') }}"></script>

@@ -2,15 +2,16 @@
 @section('content')
 
 <div class="aiz-titlebar text-right mt-2 mb-3">
-    <h5 class="mb-0 h6">انشاء فاتورة جديدة</h5>
+    <h5 class="mb-0 h6">تعديل الفاتورة </h5>
 </div>
 <div class="">
-    <form class="form form-horizontal mar-top" action="{{route('invoice.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
+    <form class="form form-horizontal mar-top" action="{{route('invoice.update' , $invoicess->id)}}" method="POST" enctype="multipart/form-data" id="choice_form">
         <div class="row gutters-5">
             <div class="col-lg-12">
                 @csrf
+                @method('PUT')
                 <input type="hidden" name="added_by" value="admin">
-                <input type="hidden" name="j" value="1" id="addedJ">
+                <input type="hidden" name="j" value="{{$invoicess->discreption->count()}}" id="addedJ">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0 h6">معلومات الفاتورة </h5>
@@ -19,13 +20,13 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">اسم المكرم <span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="name" placeholder="اسم المكرم"  required>
+                                <input type="text" class="form-control" value="{{$invoicess->name}}" name="name" placeholder="اسم المكرم"  required>
                             </div>
                         </div>
                         <div class="form-group row" id="category">
                             <label class="col-md-3 col-from-label">مدة الضمان<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                            <input type="text" class="form-control" name="warranty" placeholder="مدة الضمان"  required>
+                            <input type="text" class="form-control" value="{{$invoicess->warranty}}" name="warranty" placeholder="مدة الضمان"  required>
                             </div>
                         </div>
                     </div>
@@ -34,61 +35,56 @@
             <div class="col-lg-12">
                 <input type="hidden" name="added_by" value="admin">
                 <div class="card add-to">
+                    <!-- // -->
+
+                   
+                    @for($i=0 ; $i<$invoicess->discreption->count() ; $i++)
+                    @php
+                       $x =$i+1
+                    @endphp
                     <div class="card-header">
-                        <h5 class="mb-0 h6">الوصف</h5>
+                        <h5 class="mb-0 h6">الوصف {{$x}}</h5>
                     </div>
-                    <div class="card-body ">
-                        
+                    <input type="hidden" value="{{$invoicess->discreption[$i]->id}}"  name="id_dis{{$x}}" >
+                    <input type="hidden" value="{{$invoicess->discreption[$i]->sub_total->id}}"  name="id_sub_total_dis{{$x}}" >
+
+                    <div class="card-body "> 
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">سعر الوحدة</label>
                             <div class="col-md-4">
-                                <input type="number" class="form-control" name="unitI1" placeholder="H" required>
+                                <input type="number" value="{{$invoicess->discreption[$i]->sub_total->h}}" class="form-control" name="unitI{{$x}}" placeholder="H" required>
                             </div>
                             <div class="col-md-4">
-                                <input type="number" class="form-control" name="unitJ1" placeholder="SR" required>
+                                <input type="number" value="{{$invoicess->discreption[$i]->sub_total->sr}}" class="form-control" name="unitJ{{$x}}" placeholder="SR" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">العدد <span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="number" lang="en" class="form-control" name="amountI1" value="1" min="1" required>
+                                <input type="number" lang="en" class="form-control" value="{{$invoicess->discreption[$i]->amount}}" name="amountI{{$x}}" value="1" min="1" required>
                             </div>
                         </div>
-                        <!-- <div class="form-group row">
-                            <label class="col-md-3 col-from-label">القيمة الاجمالية</label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="priceI1" placeholder="H" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control" name="priceJ1" placeholder="SR" required>
-                            </div>
-                        </div> -->
-                       
+    
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">البيان<span class="text-danger">*</span></label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control " name="dis1" placeholder="البيان">
+                                <input type="text" class="form-control " value="{{$invoicess->discreption[$i]->dis}}" name="dis{{$x}}" placeholder="البيان">
                             </div>
                         </div>
-                        
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-            <div class="plus-section btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="Third group">
-                        <div  class=" btn btn-info action-btn">اضافة وصف </div>
-                    </div>
+                    @endfor
+
+                    <!-- // -->
+
                 </div>
             </div>
 
+
             <div class="col-12">
                 <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="Third group">
-                        <button type="submit" name="button" value="print" class="btn btn-primary action-btn">حفظ وطباعة</button>
-                    </div>
+                 
                     <div class="btn-group" role="group" aria-label="Second group">
-                        <button type="submit" name="button" value="save" class="btn btn-success action-btn">حفظ</button>
+                        <button type="submit" name="button" value="save" class="btn btn-success action-btn">تعديل</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +107,6 @@
             '<h5 class="mb-0 h6">وصف  '+j+'</h5>'+
             '</div>'  + 
             '<div class="card-body">'+
-
             '<div class="form-group row">'+
             '<label class="col-md-3 col-from-label">سعر الوحدة</label>' +
             '<div class="col-md-4">'+
@@ -127,16 +122,6 @@
             '<input type="number" lang="en" class="form-control" name="amountI'+j+'" value="1" min="1" required>' +
             '</div>' +
             '</div>'  +
-            // '<div class="form-group row">'+
-            // '<label class="col-md-3 col-from-label">القيمة الاجمالية</label>'  +
-            // '<div class="col-md-4">'        +
-            // '<input type="number" class="form-control" name="priceI'+j+'" placeholder="H" required>'     +
-            // '</div>'   +
-            // '<div class="col-md-4">' +
-            // '<input type="number" class="form-control" name="priceJ'+j+'" placeholder="SR" required>' +
-            // '</div>' +
-            // '</div>' +
-          
             '<div class="form-group row">'+
             '<label class="col-md-3 col-from-label">البيان<span class="text-danger">*</span></label>' +
             '<div class="col-md-8">'+

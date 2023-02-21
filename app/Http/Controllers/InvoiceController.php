@@ -27,12 +27,10 @@ class InvoiceController extends Controller
 
         for($i = 1 ; $i<=$req->j ; $i++){
 
-            $total = new total_price(); 
-            $total->h = $req->input('unitI'.$i);
-            $total->sr = $req->input('unitI'.$i);
-            $total->save() ;
-
-
+            // $total = new total_price(); 
+            // $total->h = $req->input('unitI'.$i);
+            // $total->sr = $req->input('unitI'.$i);
+            // $total->save() ;
 
             $sub_total = new sub_total(); 
             $sub_total->h = $req->input('unitI'.$i);
@@ -40,7 +38,7 @@ class InvoiceController extends Controller
             $sub_total->save() ;
 
             $discreption = new discreption(); 
-            $discreption->total_price_id = $total->id;
+            // $discreption->total_price_id = $total->id;
             $discreption->sub_price_id = $sub_total->id;
             $discreption->amount = $req->input('amountI'.$i);
             $discreption->dis = $req->input('dis'.$i);
@@ -48,18 +46,12 @@ class InvoiceController extends Controller
             $discreption->save() ;
 
         }
-
-       
-
         if( $req->button == 'print'){
-            return redirect()->route('invoce.viewInvoice' , ['id' => $invoice_client->id]);
-
+            return redirect()->route('invoice.viewInvoice' , ['id' => $invoice_client->id]);
         }
         else{
-            return("Done");
+            return redirect()->route('invoice.index')->with('success','تم اضافة فاتورة جديدة');
         }
-       
-
 
     }
 
@@ -83,8 +75,6 @@ class InvoiceController extends Controller
  
     }
     public function viewInvoice($id){
-
-      
         $invoicess= invoice_client::with(['discreption' => function($q){
                 $q
                 ->with('sub_total' , 'total_price');
@@ -95,6 +85,46 @@ class InvoiceController extends Controller
         return view('invoiceClient' , compact('invoicess'));
  
     }
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $invoicess= invoice_client::with(['discreption' => function($q){
+            $q
+            ->with('sub_total' , 'total_price');
+            // ->select('*');
+
+        }])->where('id' , $id)->first();
+        return view('admin.invoices.invoicesEdit' , compact('invoicess'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @param  \App\invoice_client  $invoice_client
+     * @return \Illuminate\Http\Response
+     */
+
+    public function update(Request $request , invoice_client  $invoice_client)
+    {
+
+        $invoice_client->update($request->only(['name' , 'warranty' ]));
+
+        for($i = 1 ; $i<=$request->j ; $i++){
+            discreption::where('id',$request->input('id_dis'.$i))->update(['amount'=>$request->input('amountI'.$i) ,'dis'=>$request->input('dis'.$i) ]);
+            sub_total::where('id',$request->input('id_sub_total_dis'.$i))->update(['h'=>$request->input('unitI'.$i) ,'sr'=>$request->input('unitJ'.$i) ]);
+
+        }
+
+        return redirect()->route('invoice.index')->with('success','تم التعديل');
+    }
+
 
     public function printIn(){
 
@@ -104,12 +134,23 @@ class InvoiceController extends Controller
     }
 
     public function delete( Request $req ){
-
         // dd($req->all());
         $invoicess = invoice_client::find($req->id_d);
         $invoicess->delete();
      // dd($invoicess->discreption);
         return Back();
  
+    }
+
+    public function invoiceView($id)
+    {
+        $invoicess= invoice_client::find($id);
+        return view('invoiceView' , compact('invoicess'));
+    }
+
+    public function invoicePrint( invoice_client $id)
+    {
+        $invoicess = $id;
+        return view('invoicePrint' , compact('invoicess'));
     }
 }

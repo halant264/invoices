@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class sub_total extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'h',
+        'sr',
+    ];
 }

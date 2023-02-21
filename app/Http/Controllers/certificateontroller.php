@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\certificate;
+use App\Models\BusinessSetting;
+use Exception;
+use Psy\Util\Json;
+use  Illuminate\Support\Facades\Artisan;
 
 class certificateontroller extends Controller
 {
+    public $response = [];
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +62,7 @@ class certificateontroller extends Controller
         $new_certificate->save() ;
 
 
-        return redirect()->route('certificate.index');
+        return redirect()->route('certificate.index')->with('success','تم اضافة شهادة سيارة جديدة');
 
 
 
@@ -121,10 +127,27 @@ class certificateontroller extends Controller
         return view('certifecateView' , compact('certificate'));
     }
 
+    
     public function certificatePrint( certificate $id)
     {
         $certificate = $id;
         return view('certifecatePrint' , compact('certificate'));
     }
 
+    public function updateTax( Request $request)
+    {
+        try{
+
+            $getTax =   BusinessSetting::where('type',"tax")->first();
+            BusinessSetting::where('id',$getTax->id)->update(['value'=>$request->tax ]);
+            Artisan::call('cache:clear');
+
+            $this->response['message'] = "done";
+
+        }catch(\Exception $e)
+        {
+            $this->response['message'] = $e->getMessage();
+        }
+        return Json::encode($this->response);
+    }
 }

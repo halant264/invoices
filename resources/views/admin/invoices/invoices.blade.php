@@ -10,7 +10,7 @@
             <h1 class="h3">جميع الفواتير</h1>
         </div>
             <div class="col text-left">
-                <a href="{{ route('invoce.create') }}" class="btn btn-circle btn-info">
+                <a href="{{ route('invoice.create') }}" class="btn btn-circle btn-info">
                     <span>انشاء فاتورة</span>
                 </a>
             </div>
@@ -18,6 +18,11 @@
 </div>
 <br>
 
+@if(Session('success'))
+<div class="alert alert-success text-center" role="alert">
+       {{ session('success') }}
+</div>
+@endif
 
 <div class="card">
     <!-- <form class="" id="sort_products" action="" method="GET"> -->
@@ -43,7 +48,7 @@
                     <tr>
                         <th>اسم المكرم</th>
                         <th >مدة الضمان</th>
-                        <th >تمت الطباعة</th>
+                       
                         <th  class="text-center">خيارات</th>
                     </tr>
                 </thead>
@@ -56,19 +61,17 @@
                         <td>
                              {{$value->warranty}}
                         </td>
-                        <td>
-                           {{$value->printed}}
-                        </td>
+                    
                         <td class="text-center">
-                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('invoce.viewInvoice' , ['id'=>$value->id]) }}"  title="اظهار">
+                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('invoice.invoiceView' , ['id'=>$value->id]) }}"  title="اظهار">
                                 <i class="las la-eye"></i>
                             </a>
                          
-                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('home', ['id'=>$value->id, 'type'=>$type]  )}}" title="تعديل">
+                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('invoice.edit', ['id'=>$value->id]  )}}" title="تعديل">
                                 <i class="las la-edit"></i>
                             </a>
                             <a class="btn   btn-circle btn-sm px-0"> 
-                            <form action="{{ route('invoce.delete' ) }}" method="POST">
+                            <form action="{{ route('invoice.delete' ) }}" method="POST">
                                 <!-- <a class="btn btn-primary" href="#">Edit</a> -->
                                 @csrf
                                 @method('DELETE')
@@ -78,7 +81,7 @@
                                   </button>
                             </form>
                             </a>
-                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoce.delete')}}" title="{{ translate('Delete') }}">
+                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoice.delete')}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a> -->
                         </td>

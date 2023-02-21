@@ -19,17 +19,14 @@
 	<!-- aiz core css -->
 	<link rel="stylesheet" href="{{ asset('/css/vendors.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/aiz-core.css') }}">
-
 	<script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="{{ asset('/js/jPrintPages.js') }}"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
 	<link rel="stylesheet" href="/css/boot.css">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
-
+	
     <style>
-        body {
-            font-size: 12px;
-        }
+    
     </style>
  <script>
     	var AIZ = AIZ || {};

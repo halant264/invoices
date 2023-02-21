@@ -27,13 +27,13 @@
             
                 @canany(['add_new_product', 'show_all_products','show_in_house_products','show_seller_products','show_digital_products','product_bulk_import','product_bulk_export','view_product_categories', 'view_all_brands','view_product_attributes','view_colors','view_product_reviews'])
                     <li class="aiz-side-nav-item">
-                        <a href="{{ route('invoce.index') }}" class="aiz-side-nav-link">
+                        <a href="{{ route('invoice.index') }}" class="aiz-side-nav-link">
                              <i class="las la-file-invoice aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">جميع الفواتير</span>
                         </a>
                     </li>
                     <li class="aiz-side-nav-item">
-                        <a href="{{ route('invoce.create') }}" class="aiz-side-nav-link">
+                        <a href="{{ route('invoice.create') }}" class="aiz-side-nav-link">
                         <i class="las la-file-invoice aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">انشاء فاتورة</span>
                         </a>
