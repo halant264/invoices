@@ -43,15 +43,19 @@ use Carbon\Carbon;
                     <div class="card-body text-right d-flex justify-content-between">
                         <div>
                             <div class="d-none input-tax ">
-                                <div class="d-flex ">
-                                    <input type="text" class="form-control" id="tax" name="tax" value=" {{get_setting('tax')}}" placeholder=" الضريبة"  >
-                                    <a id="update-tax" class="my-auto mx-1" href="#"> تعديل</a>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                      <input type="text" class="form-control" id="tax" name="tax" value=" {{get_setting('tax')}}" placeholder=" الضريبة"  >
+                                    </div>
+                                     <div class="spinner-border m-auto d-none" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <a id="update-tax" class="my-auto mx-1 " href="#"> تعديل</a>
                                 </div>
                             </div>
-                            <div class=" text-tax">
+                            <div class=" text-tax ">
                                {{get_setting('tax')}}
                             </div>
-                         
                         </div>
                         <div>
                             <a id="edit-tax" class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="#" title="تعديل">
@@ -73,7 +77,8 @@ use Carbon\Carbon;
           $('.text-tax').addClass('d-none');
         });
         $(document).on("click", "#update-tax", function() {
-
+            $('#update-tax').addClass('d-none');
+            $('.spinner-border').removeClass('d-none');
             
             var formData = new FormData();
             var tax = $('#tax').val();
@@ -87,7 +92,7 @@ use Carbon\Carbon;
                 processData: false,  // tell jQuery not to process the data
                 contentType: false,  // tell jQuery not to set contentType
                 success: function (data, status, xhr) {
-                    window.location.relode;
+                    window.location.reload();
                 },
                 error: function (jqXhr, textStatus, errorMessage) {
                    
