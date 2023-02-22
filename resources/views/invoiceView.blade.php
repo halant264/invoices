@@ -124,11 +124,24 @@ use Carbon\Carbon;
                             <div class=" h-i-sec">
                                 @for($i=0 ; $i < 16 ; $i++) @if($countRow < count($invoicess->discreption))
                                     <div class="d-flex border-row ">
-                                        <div class="s-row  fs-12"> {{($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->h}}</div>
+                                        <div class="s-row  fs-12">
+                                            @php
+                                                $h = ($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->h;
+                                                $h = $h / 100 ;
+                                                $floorH = floor($h);
+                                                $hdec = $floorH - $h ;
+                                                $exh= explode(".", $hdec );
+                                            @endphp
+
+                                             {{$exh[1]}} 
+                                            </div>
                                         <div class="w-75 text-center h-cell">
-                                        {{($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr}}
+                                        {{(($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr)+$floorH}}
                                         </div>
-                                        @php $countRow++; $total = $total+($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr @endphp
+                                        @php 
+                                        $countRow++;
+                                         $total = $total+($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr 
+                                         @endphp
                                     </div>
                                     @else
                                     <div class="d-flex border-row ">

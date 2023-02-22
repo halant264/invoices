@@ -60,9 +60,14 @@ class certificateontroller extends Controller
 
 
         $new_certificate->save() ;
+        
+        if( $request->button == 'print'){
+            return redirect()->route('invoice.certificateView' , ['id' => $new_certificate->id]);
+        }
+        else{
+            return redirect()->route('certificate.index')->with('success','تم اضافة شهادة سيارة جديدة');
+        }
 
-
-        return redirect()->route('certificate.index')->with('success','تم اضافة شهادة سيارة جديدة');
 
 
 
@@ -118,7 +123,9 @@ class certificateontroller extends Controller
     public function destroy(certificate $certificate)
     {
         $certificate->delete();
-        return redirect()->route('certificate.index');
+
+        // return redirect()->route('certificate.index');
+        return "done";
     }
 
     public function certificateView($id)

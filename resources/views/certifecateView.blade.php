@@ -24,7 +24,7 @@ use Carbon\Carbon;
 <body class="A5">
     
 <section class="sheet section-invoices ">
-        <h1 class="header-title text-center ffa f-bold">مركز هويدي النسيم</h1>
+        <h1 class="header-title text-center ffa f-bold pb-2">مركز هويدي النسيم</h1>
 
         <div class="w-100 line-div f-bold">
            <div class="">
@@ -83,7 +83,7 @@ use Carbon\Carbon;
                     <div class="border-row text-center h-cell">
                       {{$certificate->dis}}
                     </div>
-                @for($i=0 ; $i < 10  ; $i++)
+                @for($i=0 ; $i < 9  ; $i++)
                     <div class="border-row text-center h-cell">
                     </div>
                 @endfor

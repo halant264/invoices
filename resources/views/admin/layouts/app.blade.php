@@ -18,13 +18,18 @@
 
 	<!-- aiz core css -->
 	<link rel="stylesheet" href="{{ asset('/css/vendors.css') }}">
+
 	<link rel="stylesheet" href="{{ asset('/css/aiz-core.css') }}">
+
 	<script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="{{ asset('/js/jPrintPages.js') }}"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
 	<link rel="stylesheet" href="/css/boot.css">
+
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<!-- @if(app()->getLocale()=="ar")
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.min.css') }}">
+    @endif -->
     <style>
     
     </style>
@@ -59,12 +64,13 @@
 	<div class="aiz-main-wrapper ">
         @include('admin.side.admin_sidenav')
 		<div class="aiz-content-wrapper pt-2">
-			<div class="aiz-main-content">
+           @include('admin.side.admin_nav')
+			<div class="aiz-main-content mt-5 pt-5">
 				<div class="px-15px px-lg-25px">
                     @yield('content')
 				</div>
 				<div class="bg-white text-center py-3 px-15px px-lg-25px mt-auto">
-					<p class="mb-0">&copy; مركز هودي النسيم</p>
+					<p class="mb-0">&copy; {{env('APP_NAME')}}</p>
 				</div>
 			</div><!-- .aiz-main-content -->
 		</div><!-- .aiz-content-wrapper -->
@@ -76,53 +82,7 @@
 	<script src="{{ asset('js/aiz-core.js') }}" ></script>
 
 	@yield('script')
-    <script type="text/javascript">
-	    // @foreach (session('flash_notification', collect())->toArray() as $message)
-	    //     AIZ.plugins.notify("{{ $message['level'] }}", "{{ $message['message'] }}");
-	    // @endforeach
 
-
-        if ($('#lang-change').length > 0) {
-            $('#lang-change .dropdown-menu a').each(function() {
-                $(this).on('click', function(e){
-                    e.preventDefault();
-                    var $this = $(this);
-                    var locale = $this.data('flag');
-                    $.post('{{ route("language.change") }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
-                        location.reload();
-                    });
-
-                });
-            });
-        }
-        function menuSearch(){
-			var filter, item;
-			filter = $("#menu-search").val().toUpperCase();
-			items = $("#main-menu").find("a");
-			items = items.filter(function(i,item){
-				if($(item).find(".aiz-side-nav-text")[0].innerText.toUpperCase().indexOf(filter) > -1 && $(item).attr('href') !== '#'){
-					return item;
-				}
-			});
-
-			if(filter !== ''){
-				$("#main-menu").addClass('d-none');
-				$("#search-menu").html('')
-				if(items.length > 0){
-					for (i = 0; i < items.length; i++) {
-						const text = $(items[i]).find(".aiz-side-nav-text")[0].innerText;
-						const link = $(items[i]).attr('href');
-						 $("#search-menu").append(`<li class="aiz-side-nav-item"><a href="${link}" class="aiz-side-nav-link"><i class="las la-ellipsis-h aiz-side-nav-icon"></i><span>${text}</span></a></li`);
-					}
-				}else{
-					$("#search-menu").html(`<li class="aiz-side-nav-item"><span	class="text-center text-muted d-block">{{ translate('Nothing Found') }}</span></li>`);
-				}
-			}else{
-				$("#main-menu").removeClass('d-none');
-				$("#search-menu").html('')
-			}
-        }
-    </script>
 
 </body>
 </html>

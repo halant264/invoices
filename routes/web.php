@@ -6,6 +6,8 @@ use App\Http\Controllers\PrintController;
 use App\Http\Controllers\HomeController ;
 use App\Http\Controllers\InvoiceController ;
 use App\Http\Controllers\certificateontroller ;
+use App\Http\Controllers\StaffController ;
+use App\Http\Controllers\RoleController ;
 use App\Http\Controllers\rintController ;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -32,7 +34,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('/store', [InvoiceController::class, 'store'])->name('invoice.store');
         Route::get('/edit/{id}', [InvoiceController::class, 'edit'])->name('invoice.edit');
         Route::put('/update/{invoice_client}', [InvoiceController::class, 'update'])->name('invoice.update');
-        Route::DELETE('/delete', [InvoiceController::class, 'delete'])->name('invoice.delete');
+        Route::DELETE('/delete/{invoice_client}', [InvoiceController::class, 'delete'])->name('invoice.delete');
         Route::get('/index', [InvoiceController::class, 'index'])->name('invoice.index');
         Route::get('/invoiceView/{id}', [InvoiceController::class, 'invoiceView'])->name('invoice.invoiceView');
         Route::get('/invoicePrint/{id}', [InvoiceController::class, 'invoicePrint'])->name('invoice.invoicePrint');
@@ -50,7 +52,19 @@ Route::group(['middleware' => ['auth']], function(){
       
         Route::post('/updateTax', [certificateontroller::class, 'updateTax'])->name('updateTax');
 
+        // Staff Roles
+    //     Route::resource('roles', RoleController::class);
+    //     Route::controller(RoleController::class)->group(function () {
+    //     Route::get('/roles/edit/{id}', 'edit')->name('roles.edit');
+    //     Route::get('/roles/destroy/{id}', 'destroy')->name('roles.destroy');
 
+    //     // Add Permissiom
+    //     Route::post('/roles/add_permission', 'add_permission')->name('roles.permission');
+    //    });
+
+    //     // Staff
+    //     Route::resource('staffs', StaffController::class);
+        // Route::get('/staffs/destroy/{id}', [StaffController::class, 'destroy'])->name('staffs.destroy');
     
 });
 // Route::resource('rint', rintController::class);
@@ -82,9 +96,9 @@ Route::get('/clear', function (){
 // Route::get('/invoice2', function(){
 //     return view('printIn');
 // });
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 
 

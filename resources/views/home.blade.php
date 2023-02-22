@@ -18,7 +18,7 @@ use Carbon\Carbon;
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">عدد الفتواتير والشهادات</div>
+                <div class="card-header">عدد الفتواتير والشهادات اليومية</div>
                 <div class="card-body d-flex justify-content-between">
                     <div>
                         عدد الشهادات

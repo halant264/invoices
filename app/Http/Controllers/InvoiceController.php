@@ -47,7 +47,7 @@ class InvoiceController extends Controller
 
         }
         if( $req->button == 'print'){
-            return redirect()->route('invoice.viewInvoice' , ['id' => $invoice_client->id]);
+            return redirect()->route('invoice.invoiceView' , ['id' => $invoice_client->id]);
         }
         else{
             return redirect()->route('invoice.index')->with('success','تم اضافة فاتورة جديدة');
@@ -55,23 +55,36 @@ class InvoiceController extends Controller
 
     }
 
-    public function index(){
+    public function index(Request $request){
+
+        $sort_search = null;
 
         $invoicess= invoice_client::with(['discreption' => function($q){
-                $q->with('sub_total' , 'total_price');
-        }])->paginate(10);
+            $q->with('sub_total' , 'total_price');
+         }])->paginate(10);
 
-        $invoicess2= invoice_client::with(['discreption' => function($q){
-                $q
-                ->with('sub_total' , 'total_price');
-                // ->select('*');
-    
-        }])->where('id' , 4)->get();
+        if ($request->search != null) {
+            $sort_search = $request->search;
+            $invoicess= invoice_client::where('name', 'like', '%' . $sort_search . '%')
+            ->with(['discreption' => function($q){
+                $q->with('sub_total' , 'total_price');
+             }])->paginate(10);
+        }
+        else{
+            $invoicess= invoice_client::with(['discreption' => function($q){
+                $q->with('sub_total' , 'total_price');
+             }])->paginate(10);
+        }
+        // $invoicess2= invoice_client::with(['discreption' => function($q){
+        //         $q
+        //         ->with('sub_total' , 'total_price');
+        //         // ->select('*');
+        // }])->where('id' , 4)->get();
 
         // $products = $invoicess->paginate(10);
         $type = 'All';
 
-        return view('admin.invoices.invoices' , compact(['invoicess' , /*'invoicess' => $products  , */ 'type'  ]));
+        return view('admin.invoices.invoices' , compact(['invoicess' , 'sort_search'  ,  'type'  ]));
  
     }
     public function viewInvoice($id){
@@ -133,12 +146,18 @@ class InvoiceController extends Controller
  
     }
 
-    public function delete( Request $req ){
-        // dd($req->all());
-        $invoicess = invoice_client::find($req->id_d);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id 
+     * @return \Illuminate\Http\Response
+     */
+    public function delete( invoice_client $invoice_client){
+    
+        $invoicess = invoice_client::find($invoice_client->id);
         $invoicess->delete();
-     // dd($invoicess->discreption);
-        return Back();
+        
+        return "done";
  
     }
 

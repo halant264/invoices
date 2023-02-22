@@ -75,7 +75,7 @@ use Carbon\Carbon;
                             {{Carbon::createFromFormat('Y-m-d H:i:s', $value->exit_date)->format('m/d/Y')}} 
                         </td>
                         <td class="text-center">
-                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('certificate.certificateView' , ['id'=>$value->id]) }}"  title="اظهار">
+                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm" target="_blank"  href="{{ route('certificate.certificateView' , ['id'=>$value->id]) }}"  title="اظهار">
                                 <i class="las la-eye"></i>
                             </a>
                          
@@ -84,15 +84,15 @@ use Carbon\Carbon;
                             </a>
                             <a class="btn   btn-circle btn-sm px-0">
                                 
-                            <form action="{{ route('certificate.destroy' , $value->id ) }}" method="POST">
+                            <!-- <form action="{{ route('certificate.destroy' , $value->id ) }}" method="POST"> -->
                                 <!-- <a class="btn btn-primary" href="#">Edit</a> -->
-                                @csrf
-                                @method('DELETE')
-                                  <input type="hidden" value="{{$value->id}}" name="id_d">
-                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delte" title="حذف">
+                                <!-- @csrf
+                                @method('DELETE') -->
+                                  <!-- <input type="hidden" value="{{$value->id}}" name="id_d"> -->
+                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('certificate.destroy' , $value->id)}}" title="حذف">
                                   <i class="las la-trash"></i>
                                   </button>
-                            </form>
+                            <!-- </form> -->
                             </a>
                    
                         </td>

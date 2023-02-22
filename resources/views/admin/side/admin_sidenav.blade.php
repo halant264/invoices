@@ -1,8 +1,9 @@
 <div class="aiz-sidebar-wrap">
     <div class="aiz-sidebar left c-scrollbar">
         <div class="aiz-side-nav-logo-wrap">
-            <a href="{{ route('home') }}" class="d-block text-right">
-                    <img class="mw-100" src="{{ asset('assets/img/logo.jpeg') }}" class="brand-icon" alt="مركز هويدي النسيم">
+            <a href="{{ route('home') }}" class="d-block text-center">
+                {{env('APP_NAME')}}
+                    <!-- <img class="mw-100" src="{{ asset('assets/img/logo.jpeg') }}" class="brand-icon" alt="مركز هويدي النسيم"> -->
             </a>
         </div>
         <div class="aiz-side-nav-wrap">
@@ -25,7 +26,7 @@
 
                 <!-- Product -->
             
-                @canany(['add_new_product', 'show_all_products','show_in_house_products','show_seller_products','show_digital_products','product_bulk_import','product_bulk_export','view_product_categories', 'view_all_brands','view_product_attributes','view_colors','view_product_reviews'])
+                @canany(['admin_dashboard'])
                     <li class="aiz-side-nav-item">
                         <a href="{{ route('invoice.index') }}" class="aiz-side-nav-link">
                              <i class="las la-file-invoice aiz-side-nav-icon"></i>
@@ -53,6 +54,17 @@
 
                     </li>
                 @endcanany
+
+                <!-- Staffs -->
+                <!-- @canany(['view_all_staffs','view_staff_roles'])
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-user-tie aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{translate('Staffs')}}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                    </li>
+                @endcanany -->
 
                 <!-- Auction Product -->
             

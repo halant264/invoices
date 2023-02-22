@@ -25,16 +25,16 @@
 @endif
 
 <div class="card">
-    <!-- <form class="" id="sort_products" action="" method="GET"> -->
+    <form class="" id="sort_products" action="#" method="GET">
         <div class="card-header row gutters-5">
             <div class="col">
                 <h5 class="mb-md-0 h6 text-right">جميع الفواتير</h5>
             </div>
-            <div class="col-md-2 ml-auto">
+            <!-- <div class="col-md-2 ml-auto">
                 <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type" onchange="sort_products()">
                     <option value="">فرز </option>
                 </select>
-            </div>
+            </div> -->
             <div class="col-md-2">
                 <div class="form-group mb-0">
                     <input type="text" class="form-control form-control-sm" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="بحث">
@@ -63,7 +63,7 @@
                         </td>
                     
                         <td class="text-center">
-                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('invoice.invoiceView' , ['id'=>$value->id]) }}"  title="اظهار">
+                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm" target="_blank"  href="{{ route('invoice.invoiceView' , ['id'=>$value->id]) }}"  title="اظهار">
                                 <i class="las la-eye"></i>
                             </a>
                          
@@ -71,17 +71,20 @@
                                 <i class="las la-edit"></i>
                             </a>
                             <a class="btn   btn-circle btn-sm px-0"> 
-                            <form action="{{ route('invoice.delete' ) }}" method="POST">
+                            <!-- <form action="{{ route('invoice.delete' , $value->id ) }}" method="POST"> -->
                                 <!-- <a class="btn btn-primary" href="#">Edit</a> -->
-                                @csrf
-                                @method('DELETE')
-                                  <input type="hidden" value="{{$value->id}}" name="id_d">
-                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delte" title="حذف">
+                                <!-- @csrf
+                                @method('DELETE') -->
+                                  <!-- <input type="hidden" value="{{$value->id}}" name="id_d"> -->
+                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoice.delete' , $value->id)}}" title="حذف">
                                   <i class="las la-trash"></i>
                                   </button>
-                            </form>
+                                  <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{ route('invoice.delete' , $value->id )  }}" title="{{ translate('Delete')   }}">
+                                    <i class="las la-trash"></i>
+                                </a> -->
+                            <!-- </form> -->
                             </a>
-                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoice.delete')}}" title="{{ translate('Delete') }}">
+                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoice.delete' , $value->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a> -->
                         </td>
@@ -93,7 +96,7 @@
             {{ $invoicess->appends(request()->input())->links() }}
             </div>
         </div>
-    <!-- </form> -->
+    </form>
 </div>
 
 <script type="text/javascript">
@@ -112,99 +115,7 @@
 @section('script')
     <script type="text/javascript">
         
-        $(document).on("change", ".check-all", function() {
-            if(this.checked) {
-                // Iterate each checkbox
-                $('.check-one:checkbox').each(function() {
-                    this.checked = true;                        
-                });
-            } else {
-                $('.check-one:checkbox').each(function() {
-                    this.checked = false;                       
-                });
-            }
-          
-        });
-
-        $(document).ready(function(){
-            //$('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
-        });
-
-        function update_todays_deal(el){
-            if(el.checked){
-                var status = 1;
-            }
-            else{
-                var status = 0;
-            }
-            $.post("{{ route('home') }}", {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Todays Deal updated successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-
-        function update_published(el){
-            if(el.checked){
-                var status = 1;
-            }
-            else{
-                var status = 0;
-            }
-            $.post("{{ route('home') }}", {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Published products updated successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
         
-        function update_approved(el){
-            if(el.checked){
-                var approved = 1;
-            }
-            else{
-                var approved = 0;
-            }
-            $.post("{{ route('home') }}", {
-                _token      :   '{{ csrf_token() }}', 
-                id          :   el.value, 
-                approved    :   approved
-            }, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Product approval update successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-
-        function update_featured(el){
-            if(el.checked){
-                var status = 1;
-            }
-            else{
-                var status = 0;
-            }
-            $.post("{{ route('home') }}", {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Featured products updated successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-
-        // function sort_products(el){
-        //     $('#sort_products').submit();
-        // }
         
         function bulk_delete() {
             var data = new FormData($('#sort_products')[0]);
@@ -225,6 +136,10 @@
                 }
             });
         }
+
+      
+        
+
 
     </script>
 @endsection

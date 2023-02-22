@@ -1,59 +1,67 @@
-
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-      
+<style>
+    .dropdown-menu.dropdown-menu-md {
+        width: 175px;
+        min-width: 175px;
+    }
+    .dropdown-menu-right{
+        transform: translate3d(0px, 65px, 0px)!important;
+    }
+</style>
+<div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between ">
+    <div class="d-flex">
+        <div class="aiz-topbar-nav-toggler d-flex align-items-center justify-content-start mr-2 mr-md-3 ml-0" data-toggle="aiz-mobile-nav">
+            <button class="aiz-mobile-toggler">
+                <span></span>
+            </button>
+        </div>
     </div>
+    <div class="d-flex justify-content-between align-items-stretch flex-grow-xl-1">
+        <div class="d-flex justify-content-around align-items-center align-items-stretch">
+            
+                <!-- <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3">
+                    <div class="aiz-topbar-item">
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-icon btn-circle btn-light" href="" target="_blank" title="{{ translate('POS') }}">
+                                <i class="las la-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+            <!-- <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3">
+                <div class="aiz-topbar-item">
+                    <div class="d-flex align-items-center">
+                        <a class="btn btn-soft-danger btn-sm d-flex align-items-center" href="">
+                            <i class="las la-hdd fs-20"></i>
+                            <span class="fw-500 ml-1 mr-0 d-none d-md-block">{{ translate('Clear Cache') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="d-flex justify-content-around align-items-center align-items-stretch">
 
+            <div class="aiz-topbar-item ml-2">
+                <div class="align-items-stretch d-flex dropdown">
+                    <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            
+                            <span class="d-none d-md-block">
+                                <span class="d-block fw-500">{{Auth::user()->name}}</span>
+                                <span class="d-block small opacity-60">{{Auth::user()->user_type}}</span>
+                            </span>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
+                    <form action="{{ route('logout')}}" method="POST"> 
+                        @csrf   
+                       <button type="submit"  class="dropdown-item text-right">
+                            <i class="las la-sign-out-alt"></i>
+                            <span>تسجيل خروج</span>
+                        </button>
+                    </form>
+                    </div>
+                </div>
+            </div><!-- .aiz-topbar-item -->
+        </div>
+    </div>
+</div><!-- .aiz-topbar -->
