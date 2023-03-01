@@ -25,7 +25,7 @@
 @endif
 
 <div class="card">
-    <form class="" id="sort_products" action="#" method="GET">
+    <form class="" id="sort_products" action="" method="GET">
         <div class="card-header row gutters-5">
             <div class="col">
                 <h5 class="mb-md-0 h6 text-right">جميع الفواتير</h5>
@@ -45,16 +45,15 @@
         <div class="card-body">
             <table class="table aiz-table mb-0">
                 <thead>
-                    <tr>
+                    <tr class="text-right">
                         <th>اسم المكرم</th>
-                        <th >مدة الضمان</th>
-                       
-                        <th  class="text-center">خيارات</th>
+                        <th data-breakpoints="sm">مدة الضمان</th>
+                        <th data-breakpoints="sm" class="text-center">الخيارات</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($invoicess as $value)
-                    <tr>
+                    <tr class="text-right">
                         <td>
                             {{$value->name}}
                         </td>
@@ -70,23 +69,9 @@
                             <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('invoice.edit', ['id'=>$value->id]  )}}" title="تعديل">
                                 <i class="las la-edit"></i>
                             </a>
-                            <a class="btn   btn-circle btn-sm px-0"> 
-                            <!-- <form action="{{ route('invoice.delete' , $value->id ) }}" method="POST"> -->
-                                <!-- <a class="btn btn-primary" href="#">Edit</a> -->
-                                <!-- @csrf
-                                @method('DELETE') -->
-                                  <!-- <input type="hidden" value="{{$value->id}}" name="id_d"> -->
-                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoice.delete' , $value->id)}}" title="حذف">
+                            <a class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete c-d" data-href="{{route('invoice.delete' , $value->id)}}" title="حذف"> 
                                   <i class="las la-trash"></i>
-                                  </button>
-                                  <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{ route('invoice.delete' , $value->id )  }}" title="{{ translate('Delete')   }}">
-                                    <i class="las la-trash"></i>
-                                </a> -->
-                            <!-- </form> -->
                             </a>
-                            <!-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('invoice.delete' , $value->id)}}" title="{{ translate('Delete') }}">
-                                <i class="las la-trash"></i>
-                            </a> -->
                         </td>
                     </tr>
                     @endforeach
@@ -107,39 +92,10 @@
 
 @endsection
 
-@section('modal')
-    @include('admin.modals.delete_modal')
+
+
+@section('modal' )
+    @include('admin.modals.delete_modal' , ['routeName' => 'invoice.delete']  )
 @endsection
 
 
-@section('script')
-    <script type="text/javascript">
-        
-        
-        
-        function bulk_delete() {
-            var data = new FormData($('#sort_products')[0]);
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{route('home')}}",
-                type: 'POST',
-                data: data,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if(response == 1) {
-                        location.reload();
-                    }
-                }
-            });
-        }
-
-      
-        
-
-
-    </script>
-@endsection

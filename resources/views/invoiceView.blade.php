@@ -117,6 +117,7 @@ use Carbon\Carbon;
                 @php
                 $countRow = 0 ;
                 $total = 0 ;
+                $totalH = 0 ;
                 @endphp
                 <div class="col-12 p-0 ">
                     <div class="row m-1">
@@ -127,21 +128,23 @@ use Carbon\Carbon;
                                         <div class="s-row  fs-12">
                                             @php
                                                 $h = ($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->h;
-                                                $h = $h / 100 ;
-                                                $floorH = floor($h);
+                                                $hb = $h / 100 ;
+                                                $ha = substr($h, -2);
+                                                $floorH = floor($hb);
                                                 $hdec = $floorH - $h ;
                                                 $exh= explode(".", $hdec );
+                                                $tSr= (($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr)+$floorH;
                                             @endphp
-
-                                             {{$exh[1]}} 
+                                             {{ (int)$ha }} 
                                             </div>
                                         <div class="w-75 text-center h-cell">
-                                        {{(($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr)+$floorH}}
+                                        {{$tSr}}
                                         </div>
                                         @php 
                                         $countRow++;
-                                         $total = $total+($invoicess->discreption[$i]->amount)*$invoicess->discreption[$i]->sub_total->sr 
-                                         @endphp
+                                         $total = $total+$tSr ;
+                                         $totalH = $totalH + (int)$ha ;
+                                        @endphp
                                     </div>
                                     @else
                                     <div class="d-flex border-row ">
@@ -157,8 +160,6 @@ use Carbon\Carbon;
                             <div class=" h-i-sec">
                                 @for($i=0 ; $i < 16 ; $i++)
                                 @if($countRow < count($invoicess->discreption))
-
-
                                     <div class="d-flex border-row ">
                                         <div class="s-row  fs-12"> {{$invoicess->discreption[$i]->sub_total->h}}</div>
                                         <div class="w-75 text-center h-cell">
@@ -206,7 +207,7 @@ use Carbon\Carbon;
                                 <div class="d-block mt-1">
                                     <span class="f-bold fs-26">مركز هويدي النسيم </span>
                                     <span class="f-bold "> الضمان لا يشمل الكسر أو الاهمال </span>
-                                    <span class="f-bold d-block mr-2 text-right"> ضمان لمدة: </span>
+                                    <span class="f-bold d-block mr-2 text-right"> ضمان لمدة: {{$invoicess->warranty	}} </span>
                                     <span class="f-bold "> من التاريخ : {{ Carbon::now()->translatedFormat('j/F/Y')}}م </span>
                                 </div>
                             </div>
@@ -244,7 +245,7 @@ use Carbon\Carbon;
                             اللإجمالي:
                         </div>
                         <div class="mx-1 my-auto " style="white-space: nowrap;overflow: hidden; width:70%;">
-                            ..................... {{$total}}  .......................................
+                            .....................{{$total }}sr , {{$totalH}}h.....................
                         </div>
                         <div class="mx-1 my-auto " style=" width:15%;">
                             :Total

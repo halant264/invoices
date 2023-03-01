@@ -15,53 +15,29 @@
             </button>
         </div>
     </div>
-    <div class="d-flex justify-content-between align-items-stretch flex-grow-xl-1">
-        <div class="d-flex justify-content-around align-items-center align-items-stretch">
-            
-                <!-- <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3">
-                    <div class="aiz-topbar-item">
-                        <div class="d-flex align-items-center">
-                            <a class="btn btn-icon btn-circle btn-light" href="" target="_blank" title="{{ translate('POS') }}">
-                                <i class="las la-print"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
-            <!-- <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3">
-                <div class="aiz-topbar-item">
-                    <div class="d-flex align-items-center">
-                        <a class="btn btn-soft-danger btn-sm d-flex align-items-center" href="">
-                            <i class="las la-hdd fs-20"></i>
-                            <span class="fw-500 ml-1 mr-0 d-none d-md-block">{{ translate('Clear Cache') }}</span>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-        <div class="d-flex justify-content-around align-items-center align-items-stretch">
-
-            <div class="aiz-topbar-item ml-2">
-                <div class="align-items-stretch d-flex dropdown">
-                    <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+    <div class="aiz-topbar-item ml-2">
+                <div class="align-items-stretch d-flex dropdown show">
+                    <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="true">
                         <span class="d-flex align-items-center">
-                            
+                            <span class="avatar avatar-sm mr-md-2">
+                                <img src="{{ asset('assets/img/avatar-place.png') }}" >
+                            </span>
                             <span class="d-none d-md-block">
                                 <span class="d-block fw-500">{{Auth::user()->name}}</span>
-                                <span class="d-block small opacity-60">{{Auth::user()->user_type}}</span>
                             </span>
                         </span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                    <form action="{{ route('logout')}}" method="POST"> 
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md show" style="position: absolute; transform: translate3d(-216px, 55px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-end">
+                        
+                        <form action="{{ route('logout')}}" method="POST"> 
                         @csrf   
                        <button type="submit"  class="dropdown-item text-right">
                             <i class="las la-sign-out-alt"></i>
                             <span>تسجيل خروج</span>
                         </button>
                     </form>
+                  
                     </div>
                 </div>
-            </div><!-- .aiz-topbar-item -->
-        </div>
-    </div>
+            </div>
 </div><!-- .aiz-topbar -->

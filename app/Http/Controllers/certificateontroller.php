@@ -18,14 +18,23 @@ class certificateontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       
-        $certificate= certificate::paginate(10);
+        $sort_search = null;
+
+        if ($request->search != null) {
+            $sort_search = $request->search;
+            $certificate= certificate::where('name_client', 'like', '%' . $sort_search . '%')
+            ->paginate(10);
+        }
+        else{
+            $certificate= certificate::paginate(10);
+        }
+
 
         $type = 'All';
 
-        return view('admin.invoices.certificate' , compact('certificate'));
+        return view('admin.invoices.certificate' , compact('certificate' , 'sort_search'));
 
     }
 
@@ -122,10 +131,11 @@ class certificateontroller extends Controller
      */
     public function destroy(certificate $certificate)
     {
+      
         $certificate->delete();
 
-        // return redirect()->route('certificate.index');
-        return "done";
+        return redirect()->route('certificate.index');
+       
     }
 
     public function certificateView($id)

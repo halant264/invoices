@@ -140,10 +140,7 @@ class InvoiceController extends Controller
 
 
     public function printIn(){
-
-    
         return view('printIn' );
- 
     }
 
     /**
@@ -157,7 +154,7 @@ class InvoiceController extends Controller
         $invoicess = invoice_client::find($invoice_client->id);
         $invoicess->delete();
         
-        return "done";
+        return redirect()->route('certificate.index');
  
     }
 

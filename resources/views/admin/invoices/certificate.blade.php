@@ -27,15 +27,10 @@ use Carbon\Carbon;
 @endif
 
 <div class="card">
-    <!-- <form class="" id="sort_products" action="" method="GET"> -->
+    <form class="" id="sort_products" action="" method="GET">
         <div class="card-header row gutters-5">
             <div class="col">
                 <h5 class="mb-md-0 h6 text-right">جميع الشهادات</h5>
-            </div>
-            <div class="col-md-2 ml-auto">
-                <select class="form-control form-control-sm aiz-selectpicker mb-2 mb-md-0" name="type" id="type" >
-                    <option value="">فرز </option>
-                </select>
             </div>
             <div class="col-md-2">
                 <div class="form-group mb-0">
@@ -43,22 +38,22 @@ use Carbon\Carbon;
                 </div>
             </div>
         </div>
-    
         <div class="card-body">
             <table class="table aiz-table mb-0">
                 <thead>
-                    <tr>
+                    <tr class="text-right">
+
                         <th>اسم المكرم</th>
-                        <th> رقم السيارة</th>
-                        <th>موديل السيارة</th>
-                        <th >مدة الضمان</th>
-                        <th >تاريخ الخروج </th>
-                        <th  class="text-center">خيارات</th>
+                        <th data-breakpoints="md">رقم السيارة</th>
+                        <th data-breakpoints="sm">موديل السيارة</th>
+                        <th data-breakpoints="sm">مدة الضمان</th>
+                        <th data-breakpoints="lg">تاريخ الخروج	</th>
+                        <th data-breakpoints="sm" class="text-right">الخيارات</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($certificate as $value)
-                    <tr>
+                @foreach($certificate as $value)
+                    <tr class="text-right">
                         <td>
                             {{$value->name_client}}
                         </td>
@@ -71,30 +66,22 @@ use Carbon\Carbon;
                         <td>
                              {{$value->warranty}}
                         </td>
+
                         <td>
                             {{Carbon::createFromFormat('Y-m-d H:i:s', $value->exit_date)->format('m/d/Y')}} 
                         </td>
-                        <td class="text-center">
-                            <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm" target="_blank"  href="{{ route('certificate.certificateView' , ['id'=>$value->id]) }}"  title="اظهار">
+
+                        <td class="text-right">
+                        <a id="print" class="btn btn-soft-success btn-icon btn-circle btn-sm" target="_blank"  href="{{ route('certificate.certificateView' , ['id'=>$value->id]) }}"  title="اظهار">
                                 <i class="las la-eye"></i>
                             </a>
                          
                             <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('certificate.edit', $value->id  )}}" title="تعديل">
                                 <i class="las la-edit"></i>
                             </a>
-                            <a class="btn   btn-circle btn-sm px-0">
-                                
-                            <!-- <form action="{{ route('certificate.destroy' , $value->id ) }}" method="POST"> -->
-                                <!-- <a class="btn btn-primary" href="#">Edit</a> -->
-                                <!-- @csrf
-                                @method('DELETE') -->
-                                  <!-- <input type="hidden" value="{{$value->id}}" name="id_d"> -->
-                                  <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('certificate.destroy' , $value->id)}}" title="حذف">
-                                  <i class="las la-trash"></i>
-                                  </button>
-                            <!-- </form> -->
+                            <a class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete c-d" data-crf="certificate.destroy" data-href="{{route('certificate.destroy' , $value->id)}}" title="حذف">
+                              <i class="las la-trash"></i>
                             </a>
-                   
                         </td>
                     </tr>
                     @endforeach
@@ -104,138 +91,24 @@ use Carbon\Carbon;
             {{ $certificate->appends(request()->input())->links() }}
             </div>
         </div>
-    <!-- </form> -->
+    </form>
 </div>
-
 <script type="text/javascript">
         $(document).ready(function(){
         $('.btnprn').printPage();
         });
 </script>
 
+
+
 @endsection
 
-@section('modal')
-    @include('admin.modals.delete_modal')
+
+
+
+@section('modal' )
+    @include('admin.modals.delete_modal' , ['routeName' => 'certificate.destroy']  )
 @endsection
 
 
-@section('script')
-    <script type="text/javascript">
-        
-        $(document).on("change", ".check-all", function() {
-            if(this.checked) {
-                // Iterate each checkbox
-                $('.check-one:checkbox').each(function() {
-                    this.checked = true;                        
-                });
-            } else {
-                $('.check-one:checkbox').each(function() {
-                    this.checked = false;                       
-                });
-            }
-          
-        });
 
-        $(document).ready(function(){
-            //$('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
-        });
-
-        function update_todays_deal(el){
-            if(el.checked){
-                var status = 1;
-            }
-            else{
-                var status = 0;
-            }
-            $.post("{{ route('home') }}", {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Todays Deal updated successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-
-        function update_published(el){
-            if(el.checked){
-                var status = 1;
-            }
-            else{
-                var status = 0;
-            }
-            $.post("{{ route('home') }}", {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Published products updated successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-        
-        function update_approved(el){
-            if(el.checked){
-                var approved = 1;
-            }
-            else{
-                var approved = 0;
-            }
-            $.post("{{ route('home') }}", {
-                _token      :   '{{ csrf_token() }}', 
-                id          :   el.value, 
-                approved    :   approved
-            }, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Product approval update successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-
-        function update_featured(el){
-            if(el.checked){
-                var status = 1;
-            }
-            else{
-                var status = 0;
-            }
-            $.post("{{ route('home') }}", {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
-                if(data == 1){
-                    AIZ.plugins.notify('success', "{{ translate('Featured products updated successfully') }}");
-                }
-                else{
-                    AIZ.plugins.notify('danger', "{{ translate('Something went wrong') }}");
-                }
-            });
-        }
-
-        // function sort_products(el){
-        //     $('#sort_products').submit();
-        // }
-        
-        function bulk_delete() {
-            var data = new FormData($('#sort_products')[0]);
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{route('home')}}",
-                type: 'POST',
-                data: data,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if(response == 1) {
-                        location.reload();
-                    }
-                }
-            });
-        }
-
-    </script>
-@endsection

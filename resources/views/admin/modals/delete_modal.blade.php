@@ -1,6 +1,5 @@
-
-<!-- delete Modal -->
-<div id="delete-modal" class="modal fade">
+ <!-- delete Modal  -->
+<div id="delete-modal" class="modal fade "> 
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,38 +8,46 @@
             </div>
             <div class="modal-body text-center">
                 <p class="mt-1">هل انت متأكد من الحذف؟</p>
-                <button type="button" class="btn btn-link mt-2" data-dismiss="modal">الغاء</button>
-                <button type="button" class="btn btn-primary mt-2" onclick="link_delete()">حذف</button>
-                <!-- <a href="" id="link_delete" class="btn btn-primary mt-2" onclick="link_delete()">{{translate('Delete')}}</a> -->
+                <form action="" method="POST">
+                     <button type="button" class="btn btn-link mt-2" data-dismiss="modal">الغاء</button>
+                     @csrf
+                     @method('DELETE')
+                  <button type="submit" class="btn btn-primary mt-2"  onclick="linkdelete()" >حذف</button>
+                </form>
             </div>
         </div>
     </div>
-</div><!-- /.modal -->
+</div> 
+
+<script type="text/javascript">
+     let v = '' ;
+     $(document).on('click', '.c-d', function () {
+         v = $(this).attr("data-href");
+         console.log(v);
+         $('form').attr('action' ,  v );
+
+     });  
+</script>
 
 <script>
 
-function link_delete() {
-            var datar = $('.confirm-delete').attr("data-href");
-            console.log(datar);
-            
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: datar,
-                type: 'DELETE',
-                data: [],
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    // location.reload();
-
-                    if(response == "done") {
-                        location.reload();
-                    }
-                }
-            });
-        }
-
-</script>
+// function link_delete() {
+//             var datar = $('.confirm-delete').attr("data-href");
+//             console.log($('meta[name="csrf-token"]').attr('content'));
+//             $.ajax({
+//                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+//                 url: datar,
+//                 dataType: "json",
+//                 type: 'DELETE',
+//                 data: [],
+//                 cache: false,
+//                 contentType: false,
+//                 processData: false,
+//                 success: function (response) {
+//                     if(response == "done") {
+//                         location.reload();
+//                     }
+//                 }
+//             });
+//         }
+// </script>
